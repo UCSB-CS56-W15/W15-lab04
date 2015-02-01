@@ -6,8 +6,8 @@ import javax.swing.JFrame;
  *  just three simple Java graphics objects, namely
  *  Rectangle, Line2D.Double, Ellipse2D.Double
  *  
- * @author P. Conrad 
- * @version for UCSB CS56, S12, 02/09/2011
+ * @author P. Conrad, Tamky Ngo 
+ * @version for UCSB CS56, W15, 01/31/2015
  */
 
 public class MultiPictureViewer
@@ -31,7 +31,7 @@ public class MultiPictureViewer
        frame.setSize(640,480); // @@@ MODIFY THIS LINE IF YOU LIKE
        
        // Set your own title
-       frame.setTitle("Phill's First Drawing"); // @@@ MODIFY THIS LINE
+       frame.setTitle("Tamky's First Drawing"); // @@@ MODIFY THIS LINE
        
        // Always do this so that the red X (or red circle) works
        // to close the window. 

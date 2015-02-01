@@ -160,7 +160,7 @@ public class AllMyDrawings
 	g2.drawString("A bunch of Coffee Cups and a few houses by Phill Conrad and a bunch of fish by Tamky Ngo", 20,20);
     }
   
-    /** Draw a different picture with a few houses and coffee cups
+    /** Draw a different picture with a few fish and coffee cups
      */
 
     public static void drawPicture3(Graphics2D g2) {
