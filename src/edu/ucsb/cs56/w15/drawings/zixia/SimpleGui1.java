@@ -20,7 +20,7 @@ public class SimpleGui1 {
 	JFrame frame = new JFrame() ;
 	JButton button = new JButton("click me Zixia") ;
 	java.awt.Color myColor = new java.awt.Color(204,255,153); //R,G,B values
-	button.setBackground(mycolor);
+	button.setBackground(myColor);
 	button.setOpaque(true);
 	frame. setDefaultCloseOperation(JFrame. EXIT_ON_CLOSE) ;
 	frame. getContentPane() . add(button) ;
