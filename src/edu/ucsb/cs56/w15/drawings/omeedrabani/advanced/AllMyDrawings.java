@@ -61,6 +61,15 @@ public class AllMyDrawings
 	g2.draw(c2); 
 	
 
+	g2.setStroke(orig);
+	// Draw two GrandfatherClocks
+	GrandfatherClock gc1 = new GrandfatherClock(300, 200, 200);
+	GrandfatherClock gc2 = new GrandfatherClock(400, 100, 250);
+
+	g2.draw(gc1);
+	g2.setColor(new Color(0x8F00FF));
+	g2.draw(gc2);
+	
 	/*
 	// Draw two houses with Windows
 	
@@ -75,7 +84,7 @@ public class AllMyDrawings
 	
 	g2.setStroke(orig);
 	g2.setColor(Color.BLACK); 
-	g2.drawString("A few clocks by Omeed Rabani", 20,20);
+	g2.drawString("A few clocks and grandfather clocks by Omeed Rabani", 20,20);
     }
 
 
