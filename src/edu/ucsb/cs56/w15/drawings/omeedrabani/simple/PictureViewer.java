@@ -5,7 +5,7 @@ import javax.swing.JFrame;
  *  just three simple Java graphics objects, namely
  *  Rectangle, Line2D.Double, Ellipse2D.Double
  *  
- * @author P. Conrad 
+ * @author Omeed Rabani
  * @version CS56, Spring 2013, UCSB
  */
 

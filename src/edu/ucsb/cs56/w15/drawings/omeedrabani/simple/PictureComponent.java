@@ -13,11 +13,10 @@ import java.awt.geom.GeneralPath; // combinations of lines and curves
 
 
 /**
-   A component that draws a Picture by Phill Conrad
+   A component that draws a Picture by Omeed Rabani
    
-   @author Phill Conrad (original drawing)
-   @author Omeed Rabani (fixed the snowmans's head)
-   @version for UCSB CS56, S13
+   @author Omeed Rabani
+   @version for UCSB CS56, W15
 
    
 */
