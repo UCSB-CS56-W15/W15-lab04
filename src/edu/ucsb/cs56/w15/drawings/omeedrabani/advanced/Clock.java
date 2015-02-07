@@ -7,6 +7,7 @@ import java.awt.Shape; // general class for shapes
 import java.awt.geom.Point2D; 
 import java.awt.geom.Line2D; 
 import java.awt.geom.Rectangle2D;
+import java.awt.geom.Ellipse2D;
 import java.awt.Rectangle;
 import java.awt.geom.PathIterator;
 import java.awt.geom.AffineTransform;
@@ -44,18 +45,18 @@ public class Clock extends GeneralPathWrapper implements Shape
   
 	// Draw the outer circumference  of the Clock
 
-	Ellipse2D.Double outerCircumference = new Ellipse2D.Double( x - r, y - r, r, r);
+	Ellipse2D.Double outerCircumference = new Ellipse2D.Double( x - r, y - r, 2*r, 2*r);
       
 	// Draw minute and hour hand. The time will always say it is 12:15.
-	Line2D.Double minuteHand = new Line2D.Double( x, y, x + .75*r, y );
+	Line2D.Double minuteHand = new Line2D.Double( x, y, x+ .75*r, y );
 	Line2D.Double hourHand = new Line2D.Double( x, y, x, y - .5 * r );
 	
         // put the whole clock together
        
         GeneralPath wholeClock = this.get();
-        wholeHouse.append(outerCircumference, false);
-        wholeHouse.append(minuteHand, false);
-        wholeHouse.append(hourHand, false); 
+        wholeClock.append(outerCircumference, false);
+        wholeClock.append(minuteHand, false);
+        wholeClock.append(hourHand, false); 
         
     }
 
