@@ -19,7 +19,7 @@ public class SimpleGui1 {
     public static void main (String[] args) {
 	JFrame frame = new JFrame() ;
 	JButton button = new JButton("click this") ;
-	java.awt.Color myColor = new java.awt.Color(204,255,153);   // R, G, B values.
+	java.awt.Color myColor = new java.awt.Color(0,100,200);   // R, G, B values.
 	button.setBackground(myColor);
 	button.setOpaque(true);
 	frame. setDefaultCloseOperation(JFrame. EXIT_ON_CLOSE) ;
