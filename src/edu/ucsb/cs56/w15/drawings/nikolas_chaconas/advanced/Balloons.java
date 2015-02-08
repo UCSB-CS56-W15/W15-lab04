@@ -15,7 +15,7 @@ import edu.ucsb.cs56.w15.drawings.utilities.ShapeTransforms;
 import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 
 /**
-   A drawing of balloons that extends Ellipse2d
+   A drawing of a balloon
       
    @author Nikolas Chaconas
    @version for CS56, Winter 15, UCSB
