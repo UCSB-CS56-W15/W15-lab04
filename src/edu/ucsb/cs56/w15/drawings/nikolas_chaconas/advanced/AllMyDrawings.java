@@ -94,14 +94,15 @@ public class AllMyDrawings
 
     }
   
-    /** Draw a different picture with a bunch of balloon houses
+    /** Draw a different picture that has balloon houses rotating 45degrees each time and 
+	cycling through the colors of the rainbow.
      */
 
     public static void drawPicture3(Graphics2D g2) {
 	
 	// label the drawing
 	
-	g2.drawString("A rainbow array of balloon houses by Nick Chaconas", 20,20);
+	g2.drawString("A rotating rainbow array of balloon houses by Nick Chaconas", 20,20);
 	BalloonsTiedToHouse b2 = new BalloonsTiedToHouse(100,100,1,100,200);
 
 
@@ -110,22 +111,27 @@ public class AllMyDrawings
 
 
 	g2.setColor(Color.ORANGE);
-	Shape h = ShapeTransforms.translatedCopyOf(b2,200,0);
+	Shape h = ShapeTransforms.rotatedCopyOf(b2,Math.PI/2.0);
+	h = ShapeTransforms.translatedCopyOf(h,200,0);
 	g2.draw(h);
 
 	g2.setColor(Color.YELLOW);
+	h = ShapeTransforms.rotatedCopyOf(h,Math.PI/2.0);
 	h = ShapeTransforms.translatedCopyOf(h,200,0);
 	g2.draw(h);
 
 	g2.setColor(Color.GREEN);
+	h = ShapeTransforms.rotatedCopyOf(h,Math.PI/2.0);
 	h = ShapeTransforms.translatedCopyOf(h,-400,200);
 	g2.draw(h);
 
 	g2.setColor(Color.BLUE);
+	h = ShapeTransforms.rotatedCopyOf(h,Math.PI/2.0);
 	h = ShapeTransforms.translatedCopyOf(h, 200,0);
 	g2.draw(h);
 
 	g2.setColor(Color.MAGENTA);
+	h = ShapeTransforms.rotatedCopyOf(h,Math.PI/2.0);
 	h = ShapeTransforms.translatedCopyOf(h,200,0);
 	g2.draw(h);
        
