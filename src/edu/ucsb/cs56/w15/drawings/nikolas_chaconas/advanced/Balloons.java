@@ -67,6 +67,14 @@ public class Balloons extends GeneralPathWrapper implements java.awt.Shape {
 		}
 	}
 
+	/**
+		MakeTriangle
+		This is a function to make a small triangle at the bottom of the ellipse, to make it look more like a balloon
+		@param xCordBalloon is the x coordinate of the balloon
+		@param yCordBalloon is the y coordinate of the balloon
+		@param widthRadius is the horizontal radius of the balloon
+		@param lengthRadius is the vertical radius of the balloon
+	*/
 	public GeneralPath MakeTriangle(double xCordBalloon, double yCordBalloon, double widthRadius, double lengthRadius) {
 		GeneralPath triangle = new GeneralPath();
 		
@@ -76,6 +84,15 @@ public class Balloons extends GeneralPathWrapper implements java.awt.Shape {
 			triangle.lineTo(xCordBalloon,yCordBalloon+lengthRadius);
 			return triangle;
 	}
+	
+	/**
+		MakeEllipse
+		This is a function to make the balloon ellipses.
+		@param xCordBalloon is the x coordinate of the balloon
+		@param yCordBalloon is the y coordinate of the balloon
+		@param widthRadius is the horizontal radius of the balloon
+		@param lengthRadius is the vertical radius of the balloon
+	*/
 
 	public Ellipse2D.Double makeEllipse(double xCordBalloon, double yCordBalloon, double widthRadius, double lengthRadius) {
 		Ellipse2D.Double balloonEllipse = 
