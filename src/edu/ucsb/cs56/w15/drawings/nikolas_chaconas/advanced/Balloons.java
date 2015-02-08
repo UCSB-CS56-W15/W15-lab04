@@ -32,50 +32,62 @@ public class Balloons extends GeneralPathWrapper implements java.awt.Shape {
        @param yCordString, y coordinate of bottom of string
      */
     public Balloons(double xCordBalloon, double yCordBalloon, double size, double xCordString, double yCordString) {
-	
-	//Balloon 1
-	double widthRadius = size*10;
-	double lengthRadius = widthRadius*1.5;
-	//make balloon part
-	double newXCord = xCordBalloon;
-	double newYCord = yCordBalloon;
-	for(int i = 0; i<5; i++) {
 		
-		if(i<2){ xCordBalloon -= widthRadius*3; }
-		else if (i==2) {		
-			xCordBalloon +=widthRadius*6;
-		}
-		else { xCordBalloon += widthRadius*3; }
+		double widthRadius = size*10;
+		double lengthRadius = widthRadius*1.5;
 
+		//make balloon part
+		double newXCord = xCordBalloon;
+		double newYCord = yCordBalloon;
+		for(int i = 0; i<5; i++) {
+			
+			if(i<2){ xCordBalloon -= widthRadius*3; }
+			else if (i==2) {		
+				xCordBalloon +=widthRadius*6;
+			}
+			else { xCordBalloon += widthRadius*3; }
+
+			//make top of balloon
+			Ellipse2D.Double balloonEllipse = makeEllipse(xCordBalloon, yCordBalloon, widthRadius, lengthRadius);
+
+		    
+			//make triangle for bottom of balloon
+			GeneralPath triangle = MakeTriangle(xCordBalloon,yCordBalloon, widthRadius, lengthRadius);
+		
+			//make string for balloon
+			Line2D.Double balloonString =
+			    new Line2D.Double (xCordBalloon,yCordBalloon+lengthRadius*1.1,
+			                       xCordString,yCordString);
+
+			GeneralPath EntireBalloon = this.get();
+			EntireBalloon.append(balloonEllipse,false);
+			EntireBalloon.append(triangle, false);
+			EntireBalloon.append(balloonString,false);
+		
+		}
+	}
+
+	public GeneralPath MakeTriangle(double xCordBalloon, double yCordBalloon, double widthRadius, double lengthRadius) {
+		GeneralPath triangle = new GeneralPath();
+		
+			triangle.moveTo(xCordBalloon,yCordBalloon+lengthRadius);
+			triangle.lineTo(xCordBalloon-widthRadius/5,yCordBalloon+lengthRadius*1.1);
+			triangle.lineTo(xCordBalloon+widthRadius/5,yCordBalloon+lengthRadius*1.1);	
+			triangle.lineTo(xCordBalloon,yCordBalloon+lengthRadius);
+			return triangle;
+	}
+
+	public Ellipse2D.Double makeEllipse(double xCordBalloon, double yCordBalloon, double widthRadius, double lengthRadius) {
 		Ellipse2D.Double balloonEllipse = 
 			new Ellipse2D.Double(
 				xCordBalloon - widthRadius, 
 				yCordBalloon - lengthRadius, 
 				widthRadius*2, lengthRadius*2
 			);
-	    
-		//make triangle for bottom of balloon
-		GeneralPath triangle = new GeneralPath();
-	
-		triangle.moveTo(xCordBalloon,yCordBalloon+lengthRadius);
-		triangle.lineTo(xCordBalloon-widthRadius/5,yCordBalloon+lengthRadius*1.1);
-		triangle.lineTo(xCordBalloon+widthRadius/5,yCordBalloon+lengthRadius*1.1);	
-		triangle.lineTo(xCordBalloon,yCordBalloon+lengthRadius);
-	
-		//make string for balloon
-		Line2D.Double balloonString =
-		    new Line2D.Double (xCordBalloon,yCordBalloon+lengthRadius*1.1,
-		                       xCordString,yCordString);
-
-		GeneralPath EntireBalloon = this.get();
-		EntireBalloon.append(balloonEllipse,false);
-		EntireBalloon.append(triangle, false);
-		EntireBalloon.append(balloonString,false);
-	
+			return balloonEllipse;
 	}
-
 	
-	}
+	
    
 
 }
