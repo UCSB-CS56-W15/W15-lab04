@@ -30,13 +30,26 @@ public class BalloonsTiedToHouse extends Balloons implements Shape
 		
 		super(x,y,size,xCord,yCord);
 		
-
+		double length = size*250;
+		double width = size*200;
+		//make top of house using inheritted class MakeTriangle from Balloons.java
+		GeneralPath topOfHouse = MakeTriangle(x, yCord-length, width, length);
 		
+		double basey = yCord-length+1.1*length;
+		double basex = x-width/5;
+		double baseHeight = width*1/3;
+		double baseWidth = width*2/5;
 		Rectangle2D.Double base =
-	    		new Rectangle2D.Double(xCord, yCord, size*20, size*20);
-		
-		GeneralPath HousePart = this.get();
-		HousePart.append(base,false);
+	    		new Rectangle2D.Double(basex, basey,baseWidth, baseHeight);
+
+		Rectangle2D.Double door = 
+			new Rectangle2D.Double(basex+baseWidth*1/3,basey+baseHeight*1/2, baseWidth*1/3, baseHeight*1/2);
+
+
+		GeneralPath House = this.get();
+		House.append(topOfHouse,false);
+		House.append(base,false);
+		House.append(door,false);
 		
 
 		}
