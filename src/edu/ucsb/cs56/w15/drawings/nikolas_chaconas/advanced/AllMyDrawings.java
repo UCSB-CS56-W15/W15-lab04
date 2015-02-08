@@ -45,87 +45,89 @@ public class AllMyDrawings
     }
 
 
-    /** Draw a picture with a few balloons and balloon houses
+    /** Draw a picture with a few balloons and balloon houses scaled
      */
     public static void drawPicture2(Graphics2D g2) {
 
 	//Draw some Balloons and Balloon Houses
 	
-	/*
-	CoffeeCup large = new CoffeeCup(100,50,225,150);
-	CoffeeCup smallCC = new CoffeeCup(20,50,40,30);
-	CoffeeCup tallSkinny = new CoffeeCup(20,150,20,40);
-	CoffeeCup shortFat = new CoffeeCup(20,250,40,20);
+	BalloonsTiedToHouse b1 = new BalloonsTiedToHouse(200,100,2,200,250);
+	//draw a magenta houseballoon that is upside down.
+	g2.setColor(Color.MAGENTA);
+	Shape h = ShapeTransforms.rotatedCopyOf(b1,Math.PI);
+	g2.draw(h);
+
+	//draw two bunches of balloons that are tied to each other, one is upside down
+	//first balloon
+	g2.setColor(Color.GREEN);
+	Balloons b2 = new Balloons(450,100,1,450,200);
+	g2.draw(b2);
 	
-	g2.setColor(Color.RED);     g2.draw(large);
-	g2.setColor(Color.GREEN);   g2.draw(smallCC);
-	g2.setColor(Color.BLUE);    g2.draw(tallSkinny);
-	g2.setColor(Color.MAGENTA); g2.draw(shortFat);
+	//second balloon
+	g2.setColor(Color.RED);
+	Balloons b3 = new Balloons(450,200,1,450,300);
+	h = ShapeTransforms.rotatedCopyOf(b3,Math.PI);
+	g2.draw(h);
+
+	//make small BalloonsTiedToHouse and rotate it and translate it
+	g2.setColor(Color.BLACK);
 	
-	House h1 = new House(100,250,50,75);
-	g2.setColor(Color.CYAN); g2.draw(h1);
+	BalloonsTiedToHouse b4 = new BalloonsTiedToHouse(200,100,5,200,250);
+	h = ShapeTransforms.rotatedCopyOf(b4,Math.PI/4.0);
+	h = ShapeTransforms.translatedCopyOf(h,450,300);
+	h = ShapeTransforms.scaledCopyOf(h,.1,.1);	
+	g2.draw(h);
+
+	//@@@ SIGN AND LABEL YOUR DRAWING
 	
-	// Make a black house that's half the size, 
-	// and moved over 150 pixels in x direction
-	Shape h2 = ShapeTransforms.scaledCopyOfLL(h1,0.5,0.5);
-	h2 = ShapeTransforms.translatedCopyOf(h2,150,0);
-	g2.setColor(Color.BLACK); g2.draw(h2);
-	
-	// Here's a house that's 4x as big (2x the original)
-	// and moved over 150 more pixels to right.
-	h2 = ShapeTransforms.scaledCopyOfLL(h2,4,4);
-	h2 = ShapeTransforms.translatedCopyOf(h2,150,0);
-	
-	// We'll draw this with a thicker stroke
-	Stroke thick = new BasicStroke (4.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL);       
-	
-	// for hex colors, see (e.g.) http://en.wikipedia.org/wiki/List_of_colors
-	// #002FA7 is "International Klein Blue" according to Wikipedia
-	// In HTML we use #, but in Java (and C/C++) its 0x
-	
-	Stroke orig=g2.getStroke();
+	g2.setColor(Color.BLACK);
+	g2.drawString("Two balloon houses and two balloon bunches by Nikolas Chaconas", 20,20);
+
+
+	//make fat balloons which are black
+	Balloons b5 = new Balloons(440,340,1,440,420);
+	h = ShapeTransforms.rotatedCopyOf(b5,Math.PI/2.0);
+	Stroke thick = new BasicStroke (4.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL); 
 	g2.setStroke(thick);
-	g2.setColor(new Color(0x002FA7)); 
-	g2.draw(h2); 
-	
-	// Draw two houses with Windows
-	
-	HouseWithWindows hw1 = new HouseWithWindows(50,350,40,75);
-	HouseWithWindows hw2 = new HouseWithWindows(200,350,200,100);
-	
-	g2.draw(hw1);
-	g2.setColor(new Color(0x8F00FF)); 
+	g2.draw(h);
 
-	// Rotate the second house 45 degrees around its center.
-	Shape hw3 = ShapeTransforms.rotatedCopyOf(hw2, Math.PI/4.0);
 
-	g2.draw(hw3);
-	
-	// @@@ FINALLY, SIGN AND LABEL YOUR DRAWING
-	
-	g2.setStroke(orig);
-	g2.setColor(Color.BLACK); 
-	g2.drawString("A bunch of Coffee Cups and a few houses by Phill Conrad", 20,20); */
     }
   
-    /** Draw a different picture with a few houses and coffee cups
+    /** Draw a different picture with a bunch of balloon houses
      */
 
     public static void drawPicture3(Graphics2D g2) {
 	
 	// label the drawing
 	
-	g2.drawString("A bunch of Coffee Cups by Phill Conrad", 20,20);
+	g2.drawString("A rainbow array of balloon houses by Nick Chaconas", 20,20);
+	BalloonsTiedToHouse b2 = new BalloonsTiedToHouse(100,100,1,100,200);
 
-	
-	// Draw some coffee cups.
-	/*
-       CoffeeCup large = new CoffeeCup(100,50,225,150);
-       CoffeeCup smallCC = new CoffeeCup(20,50,40,30);
-       
-       g2.setColor(Color.RED);     g2.draw(large);
-       g2.setColor(Color.GREEN);   g2.draw(smallCC);
-       */
+
+	g2.setColor(Color.RED);
+	g2.draw(b2);
+
+
+	g2.setColor(Color.ORANGE);
+	Shape h = ShapeTransforms.translatedCopyOf(b2,200,0);
+	g2.draw(h);
+
+	g2.setColor(Color.YELLOW);
+	h = ShapeTransforms.translatedCopyOf(h,200,0);
+	g2.draw(h);
+
+	g2.setColor(Color.GREEN);
+	h = ShapeTransforms.translatedCopyOf(h,-400,200);
+	g2.draw(h);
+
+	g2.setColor(Color.BLUE);
+	h = ShapeTransforms.translatedCopyOf(h, 200,0);
+	g2.draw(h);
+
+	g2.setColor(Color.MAGENTA);
+	h = ShapeTransforms.translatedCopyOf(h,200,0);
+	g2.draw(h);
        
     }
     
