@@ -25,11 +25,11 @@ public class Balloons extends GeneralPathWrapper implements java.awt.Shape {
     /**
        Constructor
 
-       @param xCordBalloon, x coordinate of center of balloon
-       @param yCordBalloon, y coordinate of center of balloon
-       @param size, proportional multiplier for width radius of balloon 1 is small, 10 is large
-       @param xCordString, x coordinate of bottom of string
-       @param yCordString, y coordinate of bottom of string
+       @param xCordBalloon x coordinate of center of balloon
+       @param yCordBalloon y coordinate of center of balloon
+       @param size proportional multiplier for width radius of balloon 1 is small, 10 is large
+       @param xCordString x coordinate of bottom of string
+       @param yCordString y coordinate of bottom of string
      */
     public Balloons(double xCordBalloon, double yCordBalloon, double size, double xCordString, double yCordString) {
 		

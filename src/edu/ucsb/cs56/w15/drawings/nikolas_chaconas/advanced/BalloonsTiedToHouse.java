@@ -27,11 +27,11 @@ public class BalloonsTiedToHouse extends Balloons implements Shape
 {
 	/**
 	       Constructor to call Balloons and to also draw the house for balloons to be attached to.
-	       @param x, x coordinate of center of balloon
-	       @param y, y coordinate of center of balloon
-	       @param size, proportional multiplier for width radius of balloon 1 is small, 10 is large
-	       @param xCord, x coordinate of bottom of string
-	       @param yCord, y coordinate of bottom of string
+	       @param x x coordinate of center of balloon
+	       @param y y coordinate of center of balloon
+	       @param size proportional multiplier for width radius of balloon 1 is small, 10 is large
+	       @param xCord x coordinate of bottom of string
+	       @param yCord y coordinate of bottom of string
 	*/
 		
 	public BalloonsTiedToHouse(double x, double y, double size, double xCord, double yCord) {
