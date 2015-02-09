@@ -19,6 +19,9 @@ public class SimpleGui1 {
     public static void main (String[] args) {
 	JFrame frame = new JFrame() ;
 	JButton button = new JButton("click me and surprise!") ;
+	java.awt.Color myColor = new java.awt.Color(051,204,255);
+	button.setBackground(myColor);
+	button.setOpaque(true);
 	frame. setDefaultCloseOperation(JFrame. EXIT_ON_CLOSE) ;
 	frame. getContentPane() . add(button) ;
 	frame. setSize(300,300) ;
