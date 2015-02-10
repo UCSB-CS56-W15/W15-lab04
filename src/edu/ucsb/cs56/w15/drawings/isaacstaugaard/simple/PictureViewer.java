@@ -1,12 +1,12 @@
-package edu.ucsb.cs56.w15.drawings.pconrad.simple;
+package edu.ucsb.cs56.w15.drawings.isaacstaugaard.simple;
 import javax.swing.JFrame;
 
 /** A viewer class to see a picture I drew with 
  *  just three simple Java graphics objects, namely
  *  Rectangle, Line2D.Double, Ellipse2D.Double
  *  
- * @author P. Conrad 
- * @version CS56, Spring 2013, UCSB
+ * @author P. Conrad, Isaac Staugaard
+ * @version CS56, Winter 2015, UCSB
  */
 
 public class PictureViewer
@@ -21,7 +21,7 @@ public class PictureViewer
       frame.setSize(640,480); // @@@ MODIFY THIS LINE IF YOU LIKE
       
       // Set your own title
-      frame.setTitle("Phill's Drawing"); // @@@ MODIFY THIS LINE
+      frame.setTitle("Isaac's Drawing"); // @@@ MODIFY THIS LINE
       
       // Always do this so that the red X (or red circle) works
       // to close the window. 
