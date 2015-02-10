@@ -74,87 +74,66 @@ public class AllMyDrawings
     }
 
 
-    /** Draw a picture with a few houses and coffee cups
+    /** Draw a picture with a special overlapping design using the stars
      */
     public static void drawPicture2(Graphics2D g2) {
+	
+	g2.drawString("A couple designs using parabolic stars by Connor Mulcahey", 20,20); 
 
-	// Draw some coffee cups.
-	
-	CoffeeCup large = new CoffeeCup(100,50,225,150);
-	CoffeeCup smallCC = new CoffeeCup(20,50,40,30);
-	CoffeeCup tallSkinny = new CoffeeCup(20,150,20,40);
-	CoffeeCup shortFat = new CoffeeCup(20,250,40,20);
-	
-	g2.setColor(Color.RED);     g2.draw(large);
-	g2.setColor(Color.GREEN);   g2.draw(smallCC);
-	g2.setColor(Color.BLUE);    g2.draw(tallSkinny);
-	g2.setColor(Color.MAGENTA); g2.draw(shortFat);
-	
-	House h1 = new House(100,250,50,75);
-	g2.setColor(Color.CYAN); g2.draw(h1);
-	
-	// Make a black house that's half the size, 
-	// and moved over 150 pixels in x direction
-	Shape h2 = ShapeTransforms.scaledCopyOfLL(h1,0.5,0.5);
-	h2 = ShapeTransforms.translatedCopyOf(h2,150,0);
-	g2.setColor(Color.BLACK); g2.draw(h2);
-	
-	// Here's a house that's 4x as big (2x the original)
-	// and moved over 150 more pixels to right.
-	h2 = ShapeTransforms.scaledCopyOfLL(h2,4,4);
-	h2 = ShapeTransforms.translatedCopyOf(h2,150,0);
-	
-	// We'll draw this with a thicker stroke
-	Stroke thick = new BasicStroke (4.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL);       
-	
-	// for hex colors, see (e.g.) http://en.wikipedia.org/wiki/List_of_colors
-	// #002FA7 is "International Klein Blue" according to Wikipedia
-	// In HTML we use #, but in Java (and C/C++) its 0x
-	
-	Stroke orig=g2.getStroke();
+	Stroke thick = new BasicStroke (1.6f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL);       
 	g2.setStroke(thick);
-	g2.setColor(new Color(0x002FA7)); 
-	g2.draw(h2); 
-	
-	// Draw two houses with Windows
-	
-	HouseWithWindows hw1 = new HouseWithWindows(50,350,40,75);
-	HouseWithWindows hw2 = new HouseWithWindows(200,350,200,100);
-	
-	g2.draw(hw1);
-	g2.setColor(new Color(0x8F00FF)); 
 
-	// Rotate the second house 45 degrees around its center.
-	Shape hw3 = ShapeTransforms.rotatedCopyOf(hw2, Math.PI/4.0);
+	Color goodGreen = new Color(0x009900);
+	Color goodBlue = new Color(0x000099);
+	Color goodYellow = new Color(0xEEDD00);
 
-	g2.draw(hw3);
-	
-	// @@@ FINALLY, SIGN AND LABEL YOUR DRAWING
-	
-	g2.setStroke(orig);
-	g2.setColor(Color.BLACK); 
-	g2.drawString("A bunch of Coffee Cups and a few houses by Phill Conrad", 20,20);
+	ParabolicStar s1 = new ParabolicStar(100, 100, 600, 600, 18); 
+	Shape s2 = ShapeTransforms.rotatedCopyOf(s1, Math.PI/8);
+	Shape s3 = ShapeTransforms.rotatedCopyOf(s1, Math.PI/4);
+	Shape s4 = ShapeTransforms.rotatedCopyOf(s1, 3*Math.PI/8);
+	g2.setColor(Color.RED);     g2.draw(s1);
+	g2.setColor(goodGreen);   g2.draw(s2);
+	g2.setColor(goodYellow);    g2.draw(s3);
+	g2.setColor(goodBlue); g2.draw(s4);
+
+
+	ParabolicStarWithCenterLines sc1 = new ParabolicStarWithCenterLines(35, 35, 150, 150, 2); 
+	Shape sc2 = ShapeTransforms.rotatedCopyOf(sc1, Math.PI/8);
+	Shape sc3 = ShapeTransforms.rotatedCopyOf(sc1, Math.PI/4);
+	Shape sc4 = ShapeTransforms.rotatedCopyOf(sc1, 3*Math.PI/8);
+	g2.setColor(Color.RED);     g2.draw(sc1);
+	g2.setColor(goodYellow);   g2.draw(sc2);
+	g2.setColor(goodGreen);    g2.draw(sc3);
+	g2.setColor(goodBlue);  g2.draw(sc4);
+
     }
   
     /** Draw a different picture with a few houses and coffee cups
      */
 
     public static void drawPicture3(Graphics2D g2) {
-	
-	// label the drawing
-	
-	g2.drawString("A bunch of Coffee Cups by Phill Conrad", 20,20);
+        
+	// Label the drawing
+	g2.drawString("A design of parabolic stars with center lines by Connor Mulcahey", 20,20);       
 
-	
-	// Draw some coffee cups.
-	
-       CoffeeCup large = new CoffeeCup(100,50,225,150);
-       CoffeeCup smallCC = new CoffeeCup(20,50,40,30);
+	Color goodGreen = new Color(0x009900);
+	Color goodBlue = new Color(0x000099);
+	Color goodYellow = new Color(0xEEDD00);
+
        
-       g2.setColor(Color.RED);     g2.draw(large);
-       g2.setColor(Color.GREEN);   g2.draw(smallCC);
-       
-       
+	ParabolicStarWithCenterLines base = new ParabolicStarWithCenterLines(0, 0, 250, 250, 20);
+	Shape baseRotated = ShapeTransforms.rotatedCopyOf(base, Math.PI/4.0);
+	Shape s1 = ShapeTransforms.translatedCopyOf(baseRotated, 176, 9);
+	Shape s2 = ShapeTransforms.translatedCopyOf(baseRotated, 0, 185);
+	Shape s3 = ShapeTransforms.translatedCopyOf(baseRotated, 176, 360);
+	Shape s4 = ShapeTransforms.translatedCopyOf(baseRotated, 352, 185);
+
+	g2.setColor(Color.RED);     g2.draw(s1);
+	g2.setColor(goodGreen);     g2.draw(s2);
+	g2.setColor(goodYellow);    g2.draw(s3);
+	g2.setColor(goodBlue);      g2.draw(s4);
+	 
+
     }
     
 
