@@ -26,8 +26,7 @@ import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 
 public class AllMyDrawings
 {
-    /** Draw a picture with a few houses 
-     */
+    /** Draw a picture with a few basic lighthouses     */
 
     public static void drawPicture1(Graphics2D g2) {
 
@@ -109,7 +108,7 @@ public class AllMyDrawings
 	g2.drawString("A few different lighthouses by Elena Morozova", 20,20);
     }
   
-    /** Draw a different picture with a few houses and coffee cups
+    /** Draw a different picture with a rotated lighthouse
      */
 
     public static void drawPicture3(Graphics2D g2) {
