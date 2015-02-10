@@ -7,7 +7,7 @@ import javax.swing.JFrame;
  *  Rectangle, Line2D.Double, Ellipse2D.Double
  *  
  * @author P. Conrad 
- * @version for UCSB CS56, S12, 02/09/2011
+ * @version for UCSB CS56, W15, 02/09/2011
  */
 
 public class MultiPictureViewer
@@ -31,7 +31,7 @@ public class MultiPictureViewer
        frame.setSize(640,480); // @@@ MODIFY THIS LINE IF YOU LIKE
        
        // Set your own title
-       frame.setTitle("Elena's Lighthouses"); // @@@ MODIFY THIS LINE
+       frame.setTitle("Lighthouses by Elena Morozova"); // @@@ MODIFY THIS LINE
        
        // Always do this so that the red X (or red circle) works
        // to close the window. 
