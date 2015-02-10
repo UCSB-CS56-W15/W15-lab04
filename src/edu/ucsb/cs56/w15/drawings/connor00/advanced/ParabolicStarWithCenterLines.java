@@ -30,7 +30,7 @@ public class ParabolicStarWithCenterLines extends ParabolicStar implements Shape
        @param y y coord of upper left corner of house
        @param width width of the star
        @param height of star
-       @param linesPerQuadrant
+       @param linesPerQuadrant the number of lines perquadrant of the star
      */
 
     public ParabolicStarWithCenterLines(double x, double y, double width, double height, int linesPerQuadrant) {
