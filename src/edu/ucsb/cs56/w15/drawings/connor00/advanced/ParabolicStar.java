@@ -30,7 +30,7 @@ public class ParabolicStar extends GeneralPathWrapper implements Shape {
        @param y y coord of upper left corner of house
        @param width width of the star
        @param height height of star
-       @param linesPerQuadrant the bumber of lines to draw per quadrant
+       @param linesPerQuadrant the number of lines to draw per quadrant
      */
 
     public ParabolicStar(double x, double y, double width, double height, int linesPerQuadrant) {
