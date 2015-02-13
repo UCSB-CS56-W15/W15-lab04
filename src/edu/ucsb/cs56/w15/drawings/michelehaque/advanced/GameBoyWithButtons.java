@@ -34,7 +34,7 @@ public class GameBoyWithButtons extends GameBoy implements Shape
        @param width width of the GameBoy
        @param height of GameBoy
      */
-    public GameBoy(double x, double y, double width, double height)
+    public GameBoyWithButtons(double x, double y, double width, double height)
     {
         // construct the basic GameBoy shell
 	super(x,y,width,height);
@@ -43,8 +43,10 @@ public class GameBoyWithButtons extends GameBoy implements Shape
 	GeneralPath gp = this.get();
 
 	// Need to add control pad, which can just be two filled in rectangles
-	Rectangle2D.Double upDown = new Rectangle2D.Double(15,y+(height/2),10,20);
-	Rectangle2D.Double leftRight = new Rectangle2D.Double(10,y+(height/2)+5,20,10);
+	double xcoord1 = x + width * .1;
+	double xcoord2 = xcoord1 + 5;
+	Rectangle2D.Double upDown = new Rectangle2D.Double(xcoord1,y+(height/2),10,20);
+	Rectangle2D.Double leftRight = new Rectangle2D.Double(xcoord2,y+(height/2)+5,20,10);
 	
 	// Want to fill rect but don't have graphics g2...
 
@@ -52,6 +54,11 @@ public class GameBoyWithButtons extends GameBoy implements Shape
 	Ellipse2D.Double a = new Ellipse2D.Double(x+(width/2), y+(height/2), 3, 3);
 	Ellipse2D.Double b = new Ellipse2D.Double(x+(width/2)+5, y+(height/2)+5, 3, 3);
 
+	GeneralPath wholegb = this.get();
+	wholegb.append(upDown, false);
+	wholegb.append(leftRight, false);
+	wholegb.append(a, false);
+	wholegb.append(b, false);
 
     }
 
