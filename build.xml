@@ -251,6 +251,14 @@
     </java>
   </target>
 
+  <target name="myMPV4" depends="compile" 
+          description="run MultiPictureViewer from ${env.USER} subdir, arg 4">
+    <java fork="true" classpathref="project.class.path" 
+          classname="${myPackage}.advanced.MultiPictureViewer">
+      <arg value="4" />
+    </java>
+  </target>
+
   <target name="myWPTF1" depends="compile" 
 	  description="run WritePictureToFile from my code;create images/mypic1">
     <mkdir dir="images" />
