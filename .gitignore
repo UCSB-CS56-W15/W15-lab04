@@ -1,5 +1,8 @@
-*~ # emacs back up files
+# emacs back up files
+*~
 *.class
+*.swp
+*#
 
 javadoc/
 
