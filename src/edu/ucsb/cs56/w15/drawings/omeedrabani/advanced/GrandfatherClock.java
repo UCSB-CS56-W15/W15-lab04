@@ -27,7 +27,7 @@ public class GrandfatherClock extends Clock implements Shape
        Constructor
        @param x x cord for the top left corner of the drawing
        @param y y cord for the top left corner of the drawing
-       @param h height of the GrandfatherClock (width is equal to 1/10 of the height)
+       @param h height of the GrandfatherClock (width is equal to 1/4 of the height)
      */
     public GrandfatherClock(double x, double y, double h)
     {
