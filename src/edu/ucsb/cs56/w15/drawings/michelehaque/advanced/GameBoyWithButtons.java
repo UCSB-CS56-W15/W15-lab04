@@ -43,12 +43,14 @@ public class GameBoyWithButtons extends GameBoy implements Shape
 	GeneralPath gp = this.get();
 
 	// Need to add control pad, which can just be two filled in rectangles
-	Rectangle2D.Double upDown = new Rectangle2D.Double(x,y,width,height);
-	Rectangle2D.Double leftRight = new Rectangle2D.Double(x,y,width,height);
+	Rectangle2D.Double upDown = new Rectangle2D.Double(15,y+(height/2),10,20);
+	Rectangle2D.Double leftRight = new Rectangle2D.Double(10,y+(height/2)+5,20,10);
 	
+	// Want to fill rect but don't have graphics g2...
+
 	// Need to add "A" and "B" buttons, which are filled in circles
-	Ellipse2D.Double a = new Ellipse2D.Double(x, y, 3, 3);
-	Ellipse2D.Double b = new Ellipse2D.Double(x, y, 3, 3);
+	Ellipse2D.Double a = new Ellipse2D.Double(x+(width/2), y+(height/2), 3, 3);
+	Ellipse2D.Double b = new Ellipse2D.Double(x+(width/2)+5, y+(height/2)+5, 3, 3);
 
 
     }
