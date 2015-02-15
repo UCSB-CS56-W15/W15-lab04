@@ -16,4 +16,4 @@ hs_err_pid*
 
 
 # So that hidden files don't appear - Arda #
-*.*
+.*
