@@ -164,7 +164,7 @@ public class AllMyDrawings
         g2.drawString("A bunch of Cups by Shelby Elgood", 20,20);
         
         
-        // Draw some coffee cups.
+        // Draw some cups.
         
         Cup large = new Cup(300,300,80,200);
         Cup smallCup = new Cup(100,100,30,100);
@@ -174,6 +174,29 @@ public class AllMyDrawings
         
         
    }
+
+   public static void drawPicture5(Graphics2D g2) {
+
+        // label the drawing
+        
+      	g2.drawString("A bunch of Cups With Straws by Shelby Elgood", 20,20);
+        
+     
+       // Draw some cups with straws.
+        
+       	CupWithStraw large = new CupWithStraw(300,300,80,200);
+	CupWithStraw medium = new CupWithStraw(100,250,60,140);
+	CupWithStraw small = new CupWithStraw(200,100,30,60);
+      	//Cup smallCup = new Cup(100,100,30,100);
+        
+     	g2.setColor(Color.GREEN);     g2.draw(large);
+	g2.setColor(Color.RED);		g2.draw(small);
+	g2.setColor(Color.BLUE);	g2.draw(medium);
+    	//g2.setColor(Color.GREEN);   g2.draw(smallCup);
+        
+        
+     	}
+                                                            
         
 	    
 
