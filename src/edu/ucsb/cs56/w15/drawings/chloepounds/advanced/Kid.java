@@ -54,8 +54,8 @@ public class Kid extends GeneralPathWrapper implements Shape
 						  x + centerAxisX, 
 						  y + legHeight + 
 						  .75 * torsoHeight);
-	Circle head = new Circle(x + width * .5, height, 
-				 headHeight); 
+	Circle head = new Circle(x + centerAxisX, y + height, 
+				 .25 * width); 
 					     
 	GeneralPath wholeKid = this.get();
 	wholeKid.append(head, false);
