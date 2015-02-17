@@ -14,3 +14,4 @@ http://www.cs.ucsb.edu/~pconrad/cs56/15W/labs/lab04/images/cs56-lab04-fork-tree.
   
 and then pull requests will be made in the same way.
 
+javadoc: http://www.cs.ucsb.edu/~jingzhou/cs56/lab04/javadoc
