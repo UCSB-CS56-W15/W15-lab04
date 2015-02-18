@@ -60,17 +60,17 @@ public class AllMyDrawings
 	
 	// Draw two houses with Windows
 	
-	HouseWithWindows hw1 = new HouseWithWindows(50,350,40,75);
-	HouseWithWindows hw2 = new HouseWithWindows(200,350,200,100);
+	R2 d2 = new R2(50,350,40,75);
+	R2 d3 = new R2(200,350,200,100);
 	
-	g2.draw(hw1);
-	g2.setColor(new Color(0x8F00FF)); g2.draw(hw2);
+	g2.draw(d2);
+	g2.setColor(new Color(0x8F00FF)); g2.draw(d3);
 	
 	// @@@ FINALLY, SIGN AND LABEL YOUR DRAWING
 	
 	g2.setStroke(orig);
 	g2.setColor(Color.BLACK); 
-	g2.drawString("A few houses by Phill Conrad", 20,20);
+	g2.drawString("Dazzling Droids by Eric Swenson", 20,20);
     }
 
 

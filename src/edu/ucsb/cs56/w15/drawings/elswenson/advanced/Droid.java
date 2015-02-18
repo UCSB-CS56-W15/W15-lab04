@@ -35,12 +35,11 @@ public class Droid extends GeneralPathWrapper implements Shape
 		double legWidth = 0.15 * width;
 		double bodyWidth = width - 2 * legWidth;
 		double bodyHeight = 0.7 * height;
-		double bodyBaseY = y + height * 0.3;
 		
-		Rectangle2D.Double body = new Rectangle2D.Double(x + legWidth, bodyBaseY, bodyWidth, bodyHeight);
-		Rectangle2D.Double leftLeg = new Rectangle2D.Double(x, y, legWidth, legHeight);
-		Rectangle2D.Double rightLet = new Rectangle2D.Double(x + bodyWidth + legWidth, y, legWidth, legHeight);
-		Rectangle2D.Double port = new Rectangle2D.Double(x + 1.5 * legWidth, y + legHeight, width - 3 * legWidth, height * 0.05);
+		Rectangle2D.Double body = new Rectangle2D.Double(x + legWidth, y, bodyWidth, bodyHeight);
+		Rectangle2D.Double leftLeg = new Rectangle2D.Double(x, y + height - legHeight, legWidth, legHeight);
+		Rectangle2D.Double rightLet = new Rectangle2D.Double(x + bodyWidth + legWidth, y + height - legHeight, legWidth, legHeight);
+		Rectangle2D.Double port = new Rectangle2D.Double(x + 1.5 * legWidth, y + 0.2*height, width - 3 * legWidth, height * 0.05);
 		
 		GeneralPath wholeDroid = this.get();
 		wholeDroid.append(body, false);
