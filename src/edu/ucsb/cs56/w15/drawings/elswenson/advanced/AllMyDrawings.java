@@ -60,8 +60,8 @@ public class AllMyDrawings
 	
 	// Draw two houses with Windows
 	
-	R2 d2 = new R2(50,350,40,75);
-	R2 d3 = new R2(200,350,200,100);
+	R4 d2 = new R4(50,350,40,75);
+	R4 d3 = new R4(200,350,200,100);
 	
 	g2.draw(d2);
 	g2.setColor(new Color(0x8F00FF)); g2.draw(d3);
@@ -80,17 +80,17 @@ public class AllMyDrawings
 
 	// Draw some coffee cups.
 	
-	CoffeeCup large = new CoffeeCup(100,50,225,150);
-	CoffeeCup smallCC = new CoffeeCup(20,50,40,30);
-	CoffeeCup tallSkinny = new CoffeeCup(20,150,20,40);
-	CoffeeCup shortFat = new CoffeeCup(20,250,40,20);
+	Droid large = new Droid(100,50,225,150);
+	Droid smallCC = new Droid(20,50,40,30);
+	Droid tallSkinny = new Droid(20,150,20,40);
+	Droid shortFat = new Droid(20,250,40,20);
 	
 	g2.setColor(Color.RED);     g2.draw(large);
 	g2.setColor(Color.GREEN);   g2.draw(smallCC);
 	g2.setColor(Color.BLUE);    g2.draw(tallSkinny);
 	g2.setColor(Color.MAGENTA); g2.draw(shortFat);
 	
-	House h1 = new House(100,250,50,75);
+	Droid h1 = new Droid(100,250,50,75);
 	g2.setColor(Color.CYAN); g2.draw(h1);
 	
 	// Make a black house that's half the size, 
@@ -118,8 +118,8 @@ public class AllMyDrawings
 	
 	// Draw two houses with Windows
 	
-	HouseWithWindows hw1 = new HouseWithWindows(50,350,40,75);
-	HouseWithWindows hw2 = new HouseWithWindows(200,350,200,100);
+	R4 hw1 = new R4(50,350,40,75);
+	R4 hw2 = new R4(200,350,200,100);
 	
 	g2.draw(hw1);
 	g2.setColor(new Color(0x8F00FF)); 
@@ -133,7 +133,7 @@ public class AllMyDrawings
 	
 	g2.setStroke(orig);
 	g2.setColor(Color.BLACK); 
-	g2.drawString("A bunch of Coffee Cups and a few houses by Phill Conrad", 20,20);
+	g2.drawString("Many Generic Droids, few R4 Droids by Eric Swenson", 20,20);
     }
   
     /** Draw a different picture with a few houses and coffee cups
@@ -148,8 +148,8 @@ public class AllMyDrawings
 	
 	// Draw some coffee cups.
 	
-       CoffeeCup large = new CoffeeCup(100,50,225,150);
-       CoffeeCup smallCC = new CoffeeCup(20,50,40,30);
+       R4 large = new R4(100,50,225,150);
+       R4 smallCC = new R4(20,50,40,30);
        
        g2.setColor(Color.RED);     g2.draw(large);
        g2.setColor(Color.GREEN);   g2.draw(smallCC);
