@@ -7,7 +7,7 @@ This repository will be forked according to this diagram:
 
 http://www.cs.ucsb.edu/~pconrad/cs56/15W/labs/lab04/images/cs56-lab04-fork-tree.png
 
-![Fork tree for W15-lab04](http://www.cs.ucsb.edu/~pconrad/cs56/15W/labs/lab04/images/cs56-lab04-fork-tree.png)  
+![Fork tree for W15-lab04](https://raw.githubusercontent.com/UCSB-CS56-W15/W15-lab04/master/images/cs56-lab04-fork-tree.png)  
 
 (also available here: http://www.cs.ucsb.edu/~pconrad/cs56/15W/labs/lab04/images/cs56-lab04-fork-tree.png )
   
