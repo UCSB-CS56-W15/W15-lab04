@@ -1,4 +1,4 @@
-package edu.ucsb.cs56.w15.drawings.pconrad.advanced;
+package edu.ucsb.cs56.w15.drawings.elswenson.advanced;
 
 import javax.swing.JFrame;
 
@@ -31,7 +31,7 @@ public class MultiPictureViewer
        frame.setSize(640,480); // @@@ MODIFY THIS LINE IF YOU LIKE
        
        // Set your own title
-       frame.setTitle("Phill's First Drawing"); // @@@ MODIFY THIS LINE
+       frame.setTitle("Eric's Droid-tastic Drawing"); // @@@ MODIFY THIS LINE
        
        // Always do this so that the red X (or red circle) works
        // to close the window. 

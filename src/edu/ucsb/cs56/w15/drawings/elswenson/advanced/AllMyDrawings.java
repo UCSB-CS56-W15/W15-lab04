@@ -1,4 +1,4 @@
-package edu.ucsb.cs56.w15.drawings.pconrad.advanced;
+package edu.ucsb.cs56.w15.drawings.elswenson.advanced;
 
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;  // single lines
@@ -31,7 +31,7 @@ public class AllMyDrawings
 
     public static void drawPicture1(Graphics2D g2) {
 
-	House h1 = new House(100,250,50,75);
+	Droid h1 = new Droid(100,250,50,75);
 	g2.setColor(Color.CYAN); g2.draw(h1);
 	
 	// Make a black house that's half the size, 
