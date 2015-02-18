@@ -46,7 +46,7 @@ public class Door extends GeneralPathWrapper implements Shape
 	double knobDiameter = width/10;
 	double knobCenterY = y + height/2 - knobDiameter/2;
 	double knobCenterX = x + width - width/10 - knobDiameter/2;
-	Ellipse2D.Double doorKnob = new Ellipse2D.Double(knobCenterX, knobCenterX, knobDiameter, knobDiameter);
+	Ellipse2D.Double doorKnob = new Ellipse2D.Double(knobCenterX, knobCenterY, knobDiameter, knobDiameter);
         
 
         // put the whole house together
