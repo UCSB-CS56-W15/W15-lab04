@@ -30,9 +30,9 @@ public class AlarmClock extends Clock implements Shape
 		// construct the basic Clock shell
 		super(x,y,radius);
 
-        // x,y coordinates for center of clock
+	// x,y coordinates for center of clock
 		double xOrigin = x+radius;
-        double yOrigin = y+radius;
+		double yOrigin = y+radius;
 
 		// Add alarm bells to the clock
 		Arc2D.Double leftBell = new 
@@ -59,13 +59,13 @@ public class AlarmClock extends Clock implements Shape
 				(x+radius*1.7), y+radius*1.75);
 	
 		// Put together the alarm clock
-        GeneralPath wholeClock = this.get();
-        wholeClock.append(leftBell, false);
-        wholeClock.append(rightBell, false);
-        wholeClock.append(hammerStem, false);
-        wholeClock.append(hammerHead, false);
-        wholeClock.append(leftLeg, false); 
-        wholeClock.append(rightLeg, false);
+		GeneralPath wholeClock = this.get();
+		wholeClock.append(leftBell, false);
+		wholeClock.append(rightBell, false);
+		wholeClock.append(hammerStem, false);
+		wholeClock.append(hammerHead, false);
+		wholeClock.append(leftLeg, false); 
+		wholeClock.append(rightLeg, false);
     }
 
 }

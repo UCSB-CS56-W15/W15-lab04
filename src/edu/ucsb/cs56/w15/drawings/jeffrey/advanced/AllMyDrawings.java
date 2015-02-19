@@ -126,24 +126,24 @@ public class AllMyDrawings {
 		g2.drawString("A tasteful assortment of timepieces by Jeffrey Chen", 20,20);
 		
 		// Draw some clocks
-	    Clock c1 = new Clock(20,50,100);
+		Clock c1 = new Clock(20,50,100);
 
-	   	Stroke thick = new BasicStroke (4.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL);
-	   	Stroke orig=g2.getStroke();
-	    g2.setStroke(thick);
-	    g2.setColor(Color.GREEN);
-	    g2.draw(c1);
+		Stroke thick = new BasicStroke (4.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL);
+		Stroke orig=g2.getStroke();
+		g2.setStroke(thick);
+		g2.setColor(Color.GREEN);
+		g2.draw(c1);
 
-	    Shape c2 = ShapeTransforms.scaledCopyOfLL(c1,0.5,0.5);
+		Shape c2 = ShapeTransforms.scaledCopyOfLL(c1,0.5,0.5);
 		c2 = ShapeTransforms.translatedCopyOf(c2,50,150);
 		c2 = ShapeTransforms.rotatedCopyOf(c2, -Math.PI/2);
 		g2.setColor(Color.BLUE);
 		g2.setStroke(orig);
 		g2.draw(c2);
 
-	    AlarmClock ac1 = new AlarmClock(320, 50, 50);
-	    g2.setColor(Color.RED);
-	    g2.draw(ac1);
+		AlarmClock ac1 = new AlarmClock(320, 50, 50);
+		g2.setColor(Color.RED);
+		g2.draw(ac1);
 
 		Shape ac2 = ShapeTransforms.scaledCopyOfLL(ac1,2,2);
 		ac2 = ShapeTransforms.translatedCopyOf(ac2,-50,250);
