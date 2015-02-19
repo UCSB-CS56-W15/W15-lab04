@@ -17,34 +17,61 @@ import edu.ucsb.cs56.w15.drawings.utilities.ShapeTransforms;
 import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 
 /**
-   A vector drawing of a house that implements
+   A vector drawing of a clock that implements
    the Shape interface, and so can be drawn, as well as
    rotated, scaled, etc.
       
-   @author Phill Conrad 
-   @version for CS56, Winter 11, UCSB
+   @author Jeffrey Chen 
+   @version for CS56, Winter 15, UCSB
    
 */
 public class Clock extends GeneralPathWrapper implements Shape {
-    public Clock(double radius)
+    public Clock(double x, double y, double radius)
     {
-    
-        // Rather than having to scale at the end, we can just
-        // draw things the right way to begin with, using the
-        // x, y, width and height.   If you haven't already
-        // hard coded a particular drawing, this may be an easier
-        // way.
-        
-        double faceRadius = radius;
-        double minHandLength = radius * 0.8;
-	double hrHandLength = radius * 0.5;        
+        // x,y coordinates for center of clock
+        double xOrigin = x+radius;
+        double yOrigin = y+radius;
 
-        Ellipse2D clockFrame = new Ellipse2D.Double(0,0,radius,radius);                          
+        // Make frame
+        Ellipse2D clockFrame = new Ellipse2D.Double(x,y,radius*2,radius*2);  
+
         // Make minute and hour hands.
+        Line2D.Double hrHand = new
+            Line2D.Double(xOrigin, yOrigin,
+                (xOrigin)-Math.cos(.585)*radius/2,
+                (yOrigin)-Math.sin(.585)*radius/2);
+
+        Line2D.Double minHand = new
+            Line2D.Double(xOrigin, yOrigin,
+                (xOrigin)+Math.cos(.838)*radius*0.8,
+                (yOrigin)-Math.sin(.838)*radius*0.8);
+
+        // Make time indices
+        Line2D.Double twelve = new
+            Line2D.Double(xOrigin, y+(radius*0.1),
+                xOrigin, y+(radius*0.25));
+
+        Line2D.Double three = new
+            Line2D.Double(x+(radius*0.1), yOrigin,
+                x+(radius*0.25), yOrigin);
+
+        Line2D.Double six = new
+            Line2D.Double(xOrigin, (y+radius*2)-(radius*0.1),
+                xOrigin, (y+radius*2)-(radius*0.25));
+
+        Line2D.Double nine = new
+            Line2D.Double((x+radius*2)-(radius*0.1), yOrigin,
+                (x+radius*2)-(radius*0.25), yOrigin);
 
         // put the whole clock together
         GeneralPath wholeClock = this.get();
         wholeClock.append(clockFrame, false);
+        wholeClock.append(hrHand, false);
+        wholeClock.append(minHand, false);
+        wholeClock.append(twelve, false);
+        wholeClock.append(three, false);
+        wholeClock.append(six, false);
+        wholeClock.append(nine, false);
     }
 
 }
