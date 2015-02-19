@@ -148,8 +148,8 @@ public class AllMyDrawings {
 		Shape ac2 = ShapeTransforms.scaledCopyOfLL(ac1,2,2);
 		ac2 = ShapeTransforms.translatedCopyOf(ac2,-50,250);
 		ac2 = ShapeTransforms.rotatedCopyOf(ac2, Math.PI/2);
-	    g2.setStroke(thick);
-	    g2.setColor(Color.ORANGE);
-	    g2.draw(ac2);
+		g2.setStroke(thick);
+		g2.setColor(Color.ORANGE);
+		g2.draw(ac2);
 	}
 }

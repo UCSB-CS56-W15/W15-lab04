@@ -30,7 +30,7 @@ public class AlarmClock extends Clock implements Shape
 		// construct the basic Clock shell
 		super(x,y,radius);
 
-	// x,y coordinates for center of clock
+		// x,y coordinates for center of clock
 		double xOrigin = x+radius;
 		double yOrigin = y+radius;
 
