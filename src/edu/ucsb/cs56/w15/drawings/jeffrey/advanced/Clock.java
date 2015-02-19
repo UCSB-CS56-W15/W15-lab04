@@ -27,10 +27,10 @@ import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 */
 public class Clock extends GeneralPathWrapper implements Shape {
     /**
-     * Constructor for objects of class Clock
-     * Parameters:
-     *      Coordinates for upper-left rectangular corner.
-     *      Radius of clock frame.
+     * Constructor for objects of class AlarmClock
+     @param x x coordinate of top-left rectangular corner.
+     @param y y coordinate of top-left rectangular corner.
+     @param radius radius of clock frame.
      */
     public Clock(double x, double y, double radius)
     {
