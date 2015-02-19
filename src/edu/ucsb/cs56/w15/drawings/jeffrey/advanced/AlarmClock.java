@@ -25,6 +25,9 @@ public class AlarmClock extends Clock implements Shape
 {
     /**
      * Constructor for objects of class AlarmClock
+     * Parameters:
+     * 		Coordinates for upper-left rectangular corner.
+     * 		Radius of clock frame.
      */
     public AlarmClock(double x, double y, double radius) {
 		// construct the basic Clock shell

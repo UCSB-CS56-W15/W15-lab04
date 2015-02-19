@@ -17,15 +17,15 @@ import edu.ucsb.cs56.w15.drawings.utilities.ShapeTransforms;
 import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 
 /**
- * A class with static methods for drawing various pictures
+ * A class with static methods for drawing various pictures of clocks and alarm clocks.
  * 
  * @author Jeffrey Chen
- * @version for CS56, lab04, Winter 2015
+ * @version for CS56, lab04, Winter 2015, 2/18/2015
  */
 
 
 public class AllMyDrawings {
-    /** Draw a picture with a few clocks 
+    /** Draw a picture with a few clocks and alarm clocks.
      */
 
     public static void drawPicture1(Graphics2D g2) {
@@ -75,7 +75,7 @@ public class AllMyDrawings {
 	    }
 
 
-    /** Draw a picture with a clocks and alarm clocks
+    /** Draw a picture with a bunch of clocks and alarm clocks.
      */
     public static void drawPicture2(Graphics2D g2) {
 		// Draw some clocks
@@ -118,7 +118,7 @@ public class AllMyDrawings {
 		g2.drawString("A bunch of clocks and alarm clocks by Jeffrey Chen", 20,20);
 	    }
 	  
-	    /** Draw a different picture with a few clocks and alarm clocks
+	    /** Draw a tasteful assortment of clocks and alarm clocks.
 	     */
 
     public static void drawPicture3(Graphics2D g2) {

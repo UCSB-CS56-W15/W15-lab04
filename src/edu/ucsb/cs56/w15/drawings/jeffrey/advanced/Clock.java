@@ -26,6 +26,12 @@ import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
    
 */
 public class Clock extends GeneralPathWrapper implements Shape {
+    /**
+     * Constructor for objects of class Clock
+     * Parameters:
+     *      Coordinates for upper-left rectangular corner.
+     *      Radius of clock frame.
+     */
     public Clock(double x, double y, double radius)
     {
         // x,y coordinates for center of clock
