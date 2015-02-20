@@ -80,11 +80,11 @@ public class Cat extends GeneralPathWrapper implements Shape
         // Assemble Eyes
         Line2D.Double leftEye = 
             new Line2D.Double(x - (1/8)*radius, y - (1/8)*radius, 
-                            x - (1/8)*radius, y - (2/8)*radius,);
+                            x - (1/8)*radius, y - (2/8)*radius);
 
         Line2D.Double rightEye = 
             new Line2D.Double(x + (1/8)*radius, y - (1/8)*radius, 
-                            x + (1/8)*radius, y - (2/8)*radius,);
+                            x + (1/8)*radius, y - (2/8)*radius);
 
 
 
