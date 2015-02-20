@@ -55,8 +55,15 @@ public class AnimatedPictureViewer
 			}); //end of addMouseListener
 	} //end of go
 	
+
+	/**
+ 	 DrawPanel is an inner class that extends JPanel specialized for this animation with a single function, paintComponent.
+	*/
 	class DrawPanel extends JPanel
-	{
+	{	
+		/**
+ 		paintComponent() displays the current frame of the animation
+		*/
 		public void paintComponent(Graphics g)
 		{
 			Graphics2D g2 = (Graphics2D) g;
@@ -71,8 +78,14 @@ public class AnimatedPictureViewer
 		}
 	}
 	
+	/**
+ 	 Animation is an inner class that extends Thread, containing an overriden run() method
+	*/
 	class Animation extends Thread
 	{
+		/**
+ 		 run() contains all the logical calculations as well as a call to repaint to display the newly calculated frame.
+		*/
 		public void run()
 		{
 			try
