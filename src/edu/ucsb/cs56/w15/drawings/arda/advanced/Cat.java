@@ -39,8 +39,7 @@ public class Cat extends GeneralPathWrapper implements Shape
 
        @param x x coord of lower left corner of house
        @param y y coord of lower left corner of house
-       @param width width of the house
-       @param height of house (including first story and second story)
+       @param radius, the radius of the cat face circle
      */
     public Cat(double x, double y, double radius)
     {

@@ -20,15 +20,16 @@ import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
    @version for CS56, W11, UCSB, 02/23/2011
    
 */
-public class HouseWithWindows extends Cat implements Shape
+public class BetterCat extends Cat implements Shape
 {
     /**
      * Constructor for objects of class CoffeeCup
      */
-    public HouseWithWindows(double x, double y, double width, double height)
+    public BetterCat(double x, double y, double radius)
     {
 	// construct the basic house shell
-	super(x,y,width,height);
+
+	super(x,y,radius);
 
 
 
@@ -51,72 +52,55 @@ public class HouseWithWindows extends Cat implements Shape
 
 
 
+	// Right Whiskers (3 total)
+
+	Line2D.Double rightWhisker_top = 
+		new Line2D.Double(x+(3/8)*radius, y - (1/8)*radius,
+						x+(5/8)*radius, y - (2/8)*radius);
+
+	Line2D.Double rightWhisker_mid = 
+		new Line2D.Double(x+(3/8)*radius, y,
+						x+(5/8)*radius, y);
+
+	Line2D.Double rightWhisker_bot = 
+		new Line2D.Double(x+(3/8)*radius, y + (1/8)*radius,
+						x+(5/8)*radius, y + (2/8)*radius);
+
+
+
+
+
+	// Left Whiskers (3 total)
+
+	Line2D.Double leftWhisker_top = 
+		new Line2D.Double(x-(3/8)*radius, y - (1/8)*radius,
+						x-(5/8)*radius, y - (2/8)*radius);
+
+	Line2D.Double leftWhisker_mid = 
+		new Line2D.Double(x-(3/8)*radius, y,
+						x-(5/8)*radius, y);
+
+	Line2D.Double leftWhisker_bot = 
+		new Line2D.Double(x-(3/8)*radius, y + (1/8)*radius,
+						x-(5/8)*radius, y + (2/8)*radius);
 
 
 
 
 
 
-
-
-
-
-
-
-
-	// get the GeneralPath that we are going to append stuff to
+	// get the GeneralPath that we are going to append the new lines to
 	GeneralPath gp = this.get();
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	// Make three windows, spaced like this, where w=width/10.0;
-	// | +--+ +--+ +--+ |
-	// | |  | |  | |  | |
-	// | +--+ +--+ +--+ |
-	// |w 2w w 2w w w2 w|
-	//
-	// The top of window will be at y + 0.5*height and the
-	// height of the window is 0.25height;
-
-	double w = 0.10 * width;
-	double winTop = y + 0.5 * height;
-	double winHt =  0.25 * height;
-
-
-
-
-
-
-
-
-
-
-
-	// add the windows to the house
-	// Look up the meaning of the second parameter of append
-	// (Hint--is a method of "GeneralPath")
+	// add nose to drawing
 
         GeneralPath wholeHouse = this.get();
         wholeHouse.append(win1, false);
         wholeHouse.append(win2, false);
         wholeHouse.append(win3, false); 
-    }
+    } // class BetterCat
 
 }
