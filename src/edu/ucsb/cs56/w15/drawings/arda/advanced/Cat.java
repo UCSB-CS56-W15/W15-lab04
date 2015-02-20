@@ -11,19 +11,27 @@ import java.awt.Rectangle;
 import java.awt.geom.PathIterator;
 import java.awt.geom.AffineTransform;
 
+import java.awt.geom.Arc2D;  // ARCS
+import java.awt.geom.Ellipse2D;  // ellipses and circles
+import java.awt.geom.GeneralPath; // combinations of lines and curves
+
+
+
+
 import edu.ucsb.cs56.w15.drawings.utilities.ShapeTransforms;
 import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 
 /**
-   A vector drawing of a house that implements
+   A vector drawing of a simple cat face that implements
    the Shape interface, and so can be drawn, as well as
    rotated, scaled, etc.
       
-   @author Phill Conrad 
-   @version for CS56, Winter 11, UCSB
+   @author Phill Conrad
+   @author Arda Ungun
+   @version for CS56, Winter 15, UCSB
    
 */
-public class House extends GeneralPathWrapper implements Shape
+public class Cat extends GeneralPathWrapper implements Shape
 {
     /**
        Constructor
