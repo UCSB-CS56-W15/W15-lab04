@@ -70,7 +70,7 @@ public class SantaHat extends GeneralPathWrapper implements Shape
 	Shape cottonBall = new Ellipse2D.Double(x-(width/4),y-(width/2), (width/2), (width/2));
 
 
-        // put the whole house together
+        // put the whole santa hat together
        
         GeneralPath entireSantaHat = this.get();
         entireSantaHat.append(bottomBand, false);

@@ -36,37 +36,37 @@ public class SantaHatWithFace extends SantaHat implements Shape
 
 	double lowerLeftOfHatX = x-width;
 	double lowerLeftOfHatY = y+ height;
-	double leftEyeX = x - (.25 * height);
-	double leftEyeY = (.25 * height) + height;  
-	double rightEyeX = x + (.25 * height);
-	double rightEyeY = (.25 * height) + height;
-	double noseX = x;
-	double noseY = x + (1.5 * height);
-	double mouthX = x - (.25 * height);
-	double mouthY = y + (.75 * height);
+	double leftEyeX = x - (.5 * width);
+	double leftEyeY = y + height + (.5*width);  
+	double rightEyeX = x + (.25 * width);
+	double rightEyeY = y + height + (.5*width);
+	double noseX = x - (.05 * width);
+	double noseY = y + height + width;
+	double mouthX = x - (.5 * width);
+	double mouthY = y + height + (1.5 * width);
 
 	//methods to make eyes, face and nose
 	//make the face
-	Shape face = new Ellipse2D.Double(lowerLeftOfHatX,lowerLeftOfHatY, height, height);
+	Shape face = new Ellipse2D.Double(lowerLeftOfHatX,lowerLeftOfHatY, (2 * width), (2 * width));
 
 	//make the left eye
-	Shape leftEye = new Ellipse2D.Double(leftEyeX,leftEyeY,(.15*height),(.15*height));
+	Shape leftEye = new Ellipse2D.Double(leftEyeX,leftEyeY,(.15*(2*width)),(.15*(2*width)));
 
 	//make the left inner eye
-	Shape leftEyeInner = new Ellipse2D.Double(leftEyeX,leftEyeY,(.05*height),(.05*height));
+	Shape leftEyeInner = new Ellipse2D.Double(leftEyeX+(.1*width),leftEyeY,(.1*width),(.1*width));
 
 	//make the right eye
-	Shape rightEye = new Ellipse2D.Double(rightEyeX,rightEyeY,(.15*height),(.15*height));
+	Shape rightEye = new Ellipse2D.Double(rightEyeX,rightEyeY,(.3*width),(.3*width));
 
 
 	//make the right inner eye
-	Shape rightEyeInner = new Ellipse2D.Double(rightEyeX,rightEyeY,(.05*height),(.05*height));
+	Shape rightEyeInner = new Ellipse2D.Double(rightEyeX +(.1*width),rightEyeY,(.1*width),(.1*width));
 
 	//make the nose
-	Shape nose = new Ellipse2D.Double(noseX,noseY,(.05*height),(.05*height));
+	Shape nose = new Ellipse2D.Double(noseX,noseY,(.1*width),(.1*width));
 
 	//make the mouth
-	Shape mouth = new Ellipse2D.Double(mouthX,mouthY,(.5 *height),(.10*height));
+	Shape mouth = new Ellipse2D.Double(mouthX,mouthY,(width),(.0001*width));
 
 
 
