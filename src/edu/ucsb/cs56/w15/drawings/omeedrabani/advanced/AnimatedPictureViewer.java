@@ -16,6 +16,11 @@ public class AnimatedPictureViewer {
     private int y = 100;
     
     private int dx = 5;
+    private int dy = 0;
+    private boolean moveRight = true;
+    private boolean moveLeft = false;
+    private boolean moveUp = false;
+    private boolean moveDown = false;
 
     public static void main (String[] args) {
       new AnimatedPictureViewer().go();
@@ -58,7 +63,7 @@ public class AnimatedPictureViewer {
           g2.fillRect(0,0,this.getWidth(), this.getHeight());
 
           // Draw the Clock
-          g2.setColor(Color.RED);
+          g2.setColor(Color.BLUE);
           Clock test = new Clock(x, y, 100);
           g2.draw(test);
        }
@@ -69,11 +74,33 @@ public class AnimatedPictureViewer {
         try {
           while (true) {
             // Bounce off the walls
-
-            if (x >= 400) { dx = -5; }
-            if (x <= 50) { dx = 5; }
-            
-            x += dx;                
+	      
+	      if (moveRight) {
+		  dx = 5;
+		  dy = 0;
+	      }
+	      else if (moveDown) {
+		  dx = 0;
+		  dy = 5;
+	      }
+	      else if (moveLeft) {
+		  dx = -5;
+		  dy = 0;
+	      }
+	      else {
+		  dx = 0;
+		  dy = -5;
+	      }
+	      
+	      // Need to fix these boundaries.
+	      if (x >= 540 && y <= 100) { moveLeft = false; moveDown = true; }
+	      if (x <= 100 && y <= 100) { moveRight = true; moveUp = false;}
+		  if (y >= 300 && x >= 540) { }
+		  if (y <= 100 && x <= 100) { dx = 0; dy = -5; }
+	      
+	      
+            x += dx;
+	    y += dy;
             panel.repaint();
             Thread.sleep(50);
           }
