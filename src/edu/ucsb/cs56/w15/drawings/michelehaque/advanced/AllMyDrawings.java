@@ -19,6 +19,7 @@ import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 /**
  * A class with static methods for drawing GameBoys and GameBoyWithButtons
  * 
+ * @author P. Conrad
  * @author Michele Haque
  * @version for CS56, lab04, Winter 2015
  */
