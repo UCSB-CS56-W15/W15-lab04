@@ -43,20 +43,32 @@ public class GameBoyWithButtons extends GameBoy implements Shape
 	GeneralPath gp = this.get();
 
 	// Need to add control pad, which can just be two filled in rectangles
+	double lRWidth = .2*width;
+	double uDHeight = lRWidth;
+	double lRHeight = .05*height;
+	double uDWidth = lRHeight;
 	double xcoord1 = x + width * .1;
-	double xcoord2 = xcoord1 + 5;
-	Rectangle2D.Double upDown = new Rectangle2D.Double(xcoord1,y+(height/2),10,20);
-	Rectangle2D.Double leftRight = new Rectangle2D.Double(xcoord2,y+(height/2)+5,20,10);
+	double xcoord2 = xcoord1 + (lRWidth * .25);
+	double ycoord1 = y + (height * .55);
+	double ycoord2 = ycoord1 - (lRHeight/2);
+
+	Rectangle2D.Double leftRight = new Rectangle2D.Double(xcoord1,ycoord1,lRWidth, lRHeight);
+	Rectangle2D.Double upDown = new Rectangle2D.Double(xcoord2,ycoord2,uDWidth,uDHeight);
 	
 	// Want to fill rect but don't have graphics g2...
 
 	// Need to add "A" and "B" buttons, which are filled in circles
-	Ellipse2D.Double a = new Ellipse2D.Double(x+(width/2), y+(height/2), 3, 3);
-	Ellipse2D.Double b = new Ellipse2D.Double(x+(width/2)+5, y+(height/2)+5, 3, 3);
+	double diameter = .15*width;
+	double xa = x+.75*width;
+	double ya = ycoord2; 
+	double xb = xa - (1.1*diameter);
+	double yb = ya + diameter/2; 
+	Ellipse2D.Double a = new Ellipse2D.Double(xa, ya, diameter, diameter);
+	Ellipse2D.Double b = new Ellipse2D.Double(xb, yb, diameter, diameter);
 
 	GeneralPath wholegb = this.get();
-	wholegb.append(upDown, false);
 	wholegb.append(leftRight, false);
+	wholegb.append(upDown, false);
 	wholegb.append(a, false);
 	wholegb.append(b, false);
 

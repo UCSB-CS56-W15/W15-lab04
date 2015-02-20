@@ -47,15 +47,15 @@ public class GameBoy extends GeneralPathWrapper implements Shape
 	double screen1Width = .9 * width;
 	double screen1Height = .4 * height;
 	double screen2Width = .7 * screen1Width;
-	double screen2Height = screen2Width;
+	double screen2Height = .7 * screen1Height;
 
 	double widDiff1 = width - screen1Width;
 	double widDiff2 = width - screen2Width;
-	double heiDiff1 = height - screen1Height;
-	double heiDiff2 = height - screen2Height;
+	//double heiDiff1 = height - screen1Height;
+	//double heiDiff2 = height - screen2Height;
 
 	Rectangle2D.Double screen1 = new Rectangle2D.Double(x+(widDiff1/2), y+(widDiff1/2), screen1Width, screen1Height); 
-	Rectangle2D.Double screen2 = new Rectangle2D.Double(x+(widDiff2/2), y+(widDiff2/2), screen2Width, screen2Height);
+	Rectangle2D.Double screen2 = new Rectangle2D.Double(x+(widDiff1*1.75), y+(widDiff1*1.75), screen2Width, screen2Height);
 	
         // Remember that y goes DOWN the page,
         // so we ADD to y to get a "lower" value on the screen
