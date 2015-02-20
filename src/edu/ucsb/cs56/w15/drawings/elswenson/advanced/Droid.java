@@ -23,8 +23,8 @@ public class Droid extends GeneralPathWrapper implements Shape
 {
 	/**
  	 Constructor for the Droid class, creates a droid.
-	@param x = lower left x coordinate of the droid
-	@param y = lower left y coordinate of the droid
+	@param x = top left x coordinate of the droid
+	@param y = top left y coordinate of the droid
 	@param width = width of the droid
 	@param height = height of the droid
 	 
