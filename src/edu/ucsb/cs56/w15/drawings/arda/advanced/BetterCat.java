@@ -20,7 +20,7 @@ import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
    @version for CS56, W11, UCSB, 02/23/2011
    
 */
-public class HouseWithWindows extends House implements Shape
+public class HouseWithWindows extends Cat implements Shape
 {
     /**
      * Constructor for objects of class CoffeeCup
@@ -30,8 +30,61 @@ public class HouseWithWindows extends House implements Shape
 	// construct the basic house shell
 	super(x,y,width,height);
 
+
+
+
+    // Assemble Nose
+
+	Line2D.Double noseTop = 
+		new Line2D.Double(x-(1/8)*radius, y, 
+						x + (1/8)*radius, y);
+
+	Line2D.Double noseLeft =
+		new Line2D.Double(x-(1/8)*radius, y,
+						x, y+(1/8)*radius);
+
+	Line2D.Double noseRight =
+		new Line2D.Double(x-(1/8)*radius, y,
+						x, y+(1/8)*radius);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	// get the GeneralPath that we are going to append stuff to
 	GeneralPath gp = this.get();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 	// Make three windows, spaced like this, where w=width/10.0;
 	// | +--+ +--+ +--+ |
@@ -46,13 +99,16 @@ public class HouseWithWindows extends House implements Shape
 	double winTop = y + 0.5 * height;
 	double winHt =  0.25 * height;
 
-	Rectangle2D.Double win1 =
-	    new Rectangle2D.Double(x + w, winTop, 2.0 * w, winHt);
-	Rectangle2D.Double win2 =
-	    new Rectangle2D.Double(x + 4.0*w, winTop, 2.0 * w, winHt);
-	Rectangle2D.Double win3 =
-	    new Rectangle2D.Double(x + 7.0*w, winTop, 2.0 * w, winHt);
-	
+
+
+
+
+
+
+
+
+
+
 	// add the windows to the house
 	// Look up the meaning of the second parameter of append
 	// (Hint--is a method of "GeneralPath")

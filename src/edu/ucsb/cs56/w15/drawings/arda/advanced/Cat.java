@@ -1,4 +1,4 @@
-package edu.ucsb.cs56.w15.drawings.pconrad.advanced;
+package edu.ucsb.cs56.w15.drawings.arda.advanced;
 import java.awt.geom.GeneralPath; // combinations of lines and curves
 import java.awt.geom.AffineTransform; // translation, rotation, scale
 import java.awt.Shape; // general class for shapes
@@ -16,6 +16,7 @@ import java.awt.geom.Ellipse2D;  // ellipses and circles
 import java.awt.geom.GeneralPath; // combinations of lines and curves
 
 
+import static java.lang.Math.sqrt;
 
 
 import edu.ucsb.cs56.w15.drawings.utilities.ShapeTransforms;
@@ -41,7 +42,7 @@ public class Cat extends GeneralPathWrapper implements Shape
        @param width width of the house
        @param height of house (including first story and second story)
      */
-    public House(double x, double y, double width, double height)
+    public Cat(double x, double y, double radius)
     {
     
         // Rather than having to scale at the end, we can just
@@ -50,35 +51,71 @@ public class Cat extends GeneralPathWrapper implements Shape
         // hard coded a particular drawing, this may be an easier
         // way.
         
-        double firstStoryHeight = .75 * height;
-        double roofHeight = height - firstStoryHeight;
-        
-        double firstStoryUpperLeftY = y + roofHeight;
-        
-        // Make the first story
-        
-        Rectangle2D.Double firstStory = 
-            new Rectangle2D.Double(x, firstStoryUpperLeftY ,
-                          width, firstStoryHeight);
-                          
-        // make the roof.   Remember that y goes DOWN the page,
-        // so we ADD to y to get a "lower" value on the screen
-        
-        Line2D.Double leftRoof = 
-            new Line2D.Double (x, y + roofHeight,
-                               x + width/2.0, y);
-                               
-        Line2D.Double rightRoof =
-            new Line2D.Double (x + width/2.0, y,
-                               x + width, y + roofHeight);
+        Circle mainCircle = new Circle(x, y, radius);
 
-        // put the whole house together
+
+
+        // Assemble left ear
+        Line2D.Double leftEar_l = 
+            new Line2D.Double (x-sqrt(12)*radius, y - (4-sqrt(12))*radius,
+                            x-(3/8)*radius, y - (5/8)*radius);
+
+        Line2D.Double leftEar_r = 
+            new Line2D.Double (x-(3/8)*radius, y - (5/8)*radius,
+                            x-(4-sqrt(12))*radius, y - sqrt(12)*radius);
+ 
+
+        // Assemble right ear
+        Line2D.Double rightEar_l = 
+            new Line2D.Double (x+sqrt(12)*radius, y - (4-sqrt(12))*radius,
+                            x + (3/8)*radius, y - (5/8)*radius);
+
+        Line2D.Double rightEar_r = 
+            new Line2D.Double (x+(3/8)*radius, y - (5/8)*radius,
+                            x+(4-sqrt(12))*radius, y - sqrt(12)*radius);
+
+
+
+
+
+        // Assemble Eyes
+        Line2D.Double leftEye = 
+            new Line2D.Double(x - (1/8)*radius, y - (1/8)*radius, 
+                            x - (1/8)*radius, y - (2/8)*radius,);
+
+        Line2D.Double rightEye = 
+            new Line2D.Double(x + (1/8)*radius, y - (1/8)*radius, 
+                            x + (1/8)*radius, y - (2/8)*radius,);
+
+
+
+
+        // Assemble Mouth
+        Arc2D.Double mouthLeft = 
+            new Arc2D.Double(x-(2/8)*radius, y+(1/8)*radius, (2/8)*radius, (1/8)*radius, 0, 180, Arc2D.OPEN);
+
+            // same as mouthLeft, but starts at x = center, y = center - radius/8
+        Arc2D.Double mouthRight = 
+            new Arc2D.Double(x, y+(1/8)*radius, (2/8)*radius, (1/8)*radius, 0, 180, Arc2D.OPEN);
+
+
+
+        // Assemble the Cat!!
        
-        GeneralPath wholeHouse = this.get();
-        wholeHouse.append(firstStory, false);
-        wholeHouse.append(leftRoof, false);
-        wholeHouse.append(rightRoof, false); 
+        GeneralPath wholeCat = this.get();
+
+        wholeCat.append(mainCircle, false);
+
+        wholeCat.append(leftEar_l, false);
+        wholeCat.append(leftEar_r, false);
         
+        wholeCat.append(rightEar_l, false);
+        wholeCat.append(rightEar_l, false);
+        
+        wholeCat.append(mouthLeft, false);
+        wholeCat.append(mouthRight, false);
+
+
     }
 
 }
