@@ -14,11 +14,10 @@ import java.awt.geom.AffineTransform;
 import edu.ucsb.cs56.w15.drawings.utilities.ShapeTransforms;
 import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 /**
-   A House
+   A Cat face
       
-   @author Phill Conrad 
-   @version for CS56, W11, UCSB, 02/23/2011
-   
+ *  @author Arda Ungun (minimal modifications)
+ *  @version for UCSB CS56, W15, 02/20/2015
 */
 public class BetterCat extends Cat implements Shape
 {

@@ -19,9 +19,9 @@ import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 /**
  * A class with static methods for drawing various pictures
  * 
- * @author Phill Conrad 
- * @version for CS10, lab06, Spring 2009
- */
+ *  @author P. Conrad,
+ *  @author Arda Ungun (modified to run my own graphics)
+ *  @version for UCSB CS56, W15, 02/20/2015
 
 
 public class AllMyDrawings
@@ -36,6 +36,10 @@ public class AllMyDrawings
 
 
     public static void drawPicture1(Graphics2D g2) {
+
+
+	g2.drawString("A few simple and more detailed cats by Arda Ungun", 20,20);
+
 
 	Cat c1 = new Cat(100,250,100);
 	g2.setColor(Color.CYAN); g2.draw(c1);
@@ -78,8 +82,10 @@ public class AllMyDrawings
 	
 	g2.setStroke(orig);
 	g2.setColor(Color.BLACK); 
-	g2.drawString("A few cats by Arda Ungun", 20,20);
     }
+
+
+
 
 
 
@@ -164,20 +170,24 @@ public class AllMyDrawings
 
 
 
+
+
+
+
+
     public static void drawPicture3(Graphics2D g2) {
 	
 	// label the drawing
 	
-	g2.drawString("A bunch of Coffee Cups by Phill Conrad", 20,20);
-
+	g2.drawString("Cats of various sizes by Arda Ungun", 20,20);
 	
-	// Draw some coffee cups.
-	
-       CoffeeCup large = new CoffeeCup(100,50,225,150);
-       CoffeeCup smallCC = new CoffeeCup(20,50,40,30);
+       Cat smallCat = new Cat(40,40,20);
+       Cat mediumCat = new Cat(400,150,100);
+       Cat megaCat = new Cat(300,250,200);
        
-       g2.setColor(Color.RED);     g2.draw(large);
-       g2.setColor(Color.GREEN);   g2.draw(smallCC);
+       g2.setColor(Color.BLUE);     g2.draw(smallCat);
+       g2.setColor(Color.RED);   	g2.draw(mediumCat);
+       g2.setColor(Color.GREEN);	g2.draw(megaCat);
        
        
     }
