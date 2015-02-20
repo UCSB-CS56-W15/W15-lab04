@@ -63,85 +63,86 @@ public class AllMyDrawings
 	
 	GameBoyWithButtons gbb1 = new GameBoyWithButtons(50,50,40,65);
 	GameBoyWithButtons gbb2 = new GameBoyWithButtons(200,50,100,200);
-	
+	g2.setStroke(orig);
 	g2.draw(gbb1);
 	g2.setColor(new Color(0x8F00FF)); g2.draw(gbb2);
 	
 	// @@@ FINALLY, SIGN AND LABEL YOUR DRAWING
 	
-	g2.setStroke(orig);
+	//g2.setStroke(orig);
 	g2.setColor(Color.BLACK); 
 	g2.drawString("A few GameBoys by Michele Haque", 20,20);
     }
 
 
-    /** Draw a picture with a few houses and coffee cups
+    /** Draw a different picture with GameBoys
      */
     public static void drawPicture2(Graphics2D g2) {
 
-	House h1 = new House(100,250,50,75);
-	g2.setColor(Color.CYAN); g2.draw(h1);
+	GameBoy gb1 = new GameBoy(100,50,50,75);
+	g2.setColor(Color.RED); g2.draw(gb1);
 	
-	// Make a black house that's half the size, 
-	// and moved over 150 pixels in x direction
-	Shape h2 = ShapeTransforms.scaledCopyOfLL(h1,0.5,0.5);
-	h2 = ShapeTransforms.translatedCopyOf(h2,150,0);
-	g2.setColor(Color.BLACK); g2.draw(h2);
+	// Make a green GameBoy that's half the size, 
+	// and moved down 50 pixels in y direction
+	Shape gb2 = ShapeTransforms.scaledCopyOfLL(gb1,0.5,0.5);
+	gb2 = ShapeTransforms.translatedCopyOf(gb2,0,50);
+	g2.setColor(Color.GREEN); g2.draw(gb2);
 	
-	// Here's a house that's 4x as big (2x the original)
-	// and moved over 150 more pixels to right.
-	h2 = ShapeTransforms.scaledCopyOfLL(h2,4,4);
-	h2 = ShapeTransforms.translatedCopyOf(h2,150,0);
-	
-	// We'll draw this with a thicker stroke
-	Stroke thick = new BasicStroke (4.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL);       
+	// Here's a GameBoy that's 2x as small (4x smaller than the original)
+	// and moved over 50 more pixels down.
+	gb2 = ShapeTransforms.scaledCopyOfLL(gb2,0.5,0.5);
+	gb2 = ShapeTransforms.translatedCopyOf(gb2,0,50);    
 	
 	// for hex colors, see (e.g.) http://en.wikipedia.org/wiki/List_of_colors
 	// #002FA7 is "International Klein Blue" according to Wikipedia
 	// In HTML we use #, but in Java (and C/C++) its 0x
 	
-	Stroke orig=g2.getStroke();
-	g2.setStroke(thick);
 	g2.setColor(new Color(0x002FA7)); 
-	g2.draw(h2); 
+	g2.draw(gb2); 
 	
-	// Draw two houses with Windows
+	// Draw two GameBoys with Buttons but rotated 90 degrees
 	
-	HouseWithWindows hw1 = new HouseWithWindows(50,350,40,75);
-	HouseWithWindows hw2 = new HouseWithWindows(200,350,200,100);
-	
-	g2.draw(hw1);
-	g2.setColor(new Color(0x8F00FF)); 
+	g2.setColor(Color.GRAY);
 
-	// Rotate the second house 45 degrees around its center.
-	Shape hw3 = ShapeTransforms.rotatedCopyOf(hw2, Math.PI/4.0);
+	GameBoyWithButtons gb3  = new GameBoyWithButtons(50,350,40,75);
+	GameBoyWithButtons gb4 = new GameBoyWithButtons(200,350,20,50);
+	
+	Shape gb5 = ShapeTransforms.rotatedCopyOf(gb3, Math.PI/2);
+	Shape gb6 = ShapeTransforms.rotatedCopyOf(gb4, Math.PI/2);
 
-	g2.draw(hw3);
+	g2.draw(gb5);
+	g2.setColor(Color.BLACK);
+	g2.draw(gb6);
 	
 	// @@@ FINALLY, SIGN AND LABEL YOUR DRAWING
 	
-	g2.setStroke(orig);
-	g2.setColor(Color.BLACK); 
-	g2.drawString("A bunch of Coffee Cups and a few houses by Phill Conrad", 20,20);
+	g2.drawString("More GameBoys by Michele Haque", 20,20);
     }
   
-    /** Draw a different picture with a few houses and coffee cups
+    /** Draw a different picture with GameBoys
      */
 
     public static void drawPicture3(Graphics2D g2) {
 	
 	// label the drawing
 	
-	g2.drawString("A bunch of Coffee Cups by Phill Conrad", 20,20);
+	g2.drawString("GameBoys in many directions by Michele Haque", 20,20);
 
 	
-	// Draw some coffee cups.
+	// Draw 2 GameBoys and 2 GameBoysWithButtons
 	
-       CoffeeCup large = new CoffeeCup(100,50,225,150);
-       CoffeeCup smallCC = new CoffeeCup(20,50,40,30);
+	GameBoy gb1 = new GameBoy(50,200,75,125);
+	GameBoyWithButtons gb2 = new GameBoyWithButtons(200,50,75,125);
+	Shape gb3 = ShapeTransforms.rotatedCopyOf(gb1, Math.PI/2);
+	
+	Shape gb4 = ShapeTransforms.rotatedCopyOf(gb3, Math.PI);
+	Shape gb5 = ShapeTransforms.translatedCopyOf(gb4, 4*75, 0);
+	Shape gb6 = ShapeTransforms.translatedCopyOf(gb2, 0, 2*125);
+	Shape gb7 = ShapeTransforms.rotatedCopyOf(gb6, Math.PI);
+
        
-       g2.setColor(Color.RED);     g2.draw(large);
-       g2.setColor(Color.GREEN);   g2.draw(smallCC);
+	g2.setColor(Color.RED);     g2.draw(gb2);          g2.draw(gb7);
+	g2.setColor(Color.GREEN);   g2.draw(gb3);          g2.draw(gb5);
        
        
     }
