@@ -1,17 +1,22 @@
 package edu.ucsb.cs56.w15.drawings.eshong.advanced;
 
+import java.awt.geom.GeneralPath; // combinations of lines and curves
+import java.awt.geom.AffineTransform; // translation, rotation, scale
+import java.awt.Shape; // general class for shapes
+
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;  // single lines
 import java.awt.geom.Ellipse2D;  // ellipses and circles
 import java.awt.geom.Rectangle2D; // for the bounding box
 import java.awt.Rectangle;  // squares and rectangles
-import java.awt.geom.GeneralPath; // combinations of lines and curves
-import java.awt.geom.AffineTransform; // translation, rotation, scale
-import java.awt.Shape; // general class for shapes
+
 import java.awt.Color; // class for Colors
 import java.awt.Stroke;
 import java.awt.BasicStroke;
 
+import java.awt.geom.Point2D;
+import java.awt.geom.PathIterator;
+import java.awt.geom.Ellipse2D.Double;
 
 import edu.ucsb.cs56.w15.drawings.utilities.ShapeTransforms;
 import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
@@ -23,117 +28,85 @@ import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
  * @version for CS10, lab06, Spring 2009
  */
 
-
 public class AllMyDrawings
 {
-    /** Draw a picture with a few houses 
+
+    /** Draw a blank domino 
      */
-
     public static void drawPicture1(Graphics2D g2) {
+	Domino d1 = new Domino(100,250,30,70);
+	g2.setColor(Color.BLACK); g2.draw(d1);
 
-	House h1 = new House(100,250,50,75);
-	g2.setColor(Color.CYAN); g2.draw(h1);
-	
-	// Make a black house that's half the size, 
+	// Make a blue domino that's half the size,
 	// and moved over 150 pixels in x direction
 
-	Shape h2 = ShapeTransforms.scaledCopyOfLL(h1,0.5,0.5);
-	h2 = ShapeTransforms.translatedCopyOf(h2,150,0);
-	g2.setColor(Color.BLACK); g2.draw(h2);
-	
-	// Here's a house that's 4x as big (2x the original)
+	Shape d2 = ShapeTransforms.scaledCopyOfLL(d1,0.5,0.5);
+	d2 = ShapeTransforms.translatedCopyOf(d2,150,0);
+	g2.setColor(Color.BLUE); g2. draw(d2);
+
+	// Make a domino that's 4x as big (2x the original)
 	// and moved over 150 more pixels to right.
-	h2 = ShapeTransforms.scaledCopyOfLL(h2,4,4);
-	h2 = ShapeTransforms.translatedCopyOf(h2,150,0);
-	
+	d2 = ShapeTransforms.scaledCopyOfLL(d2,4,4);
+	d2 = ShapeTransforms.translatedCopyOf(d2,150,0);
+
 	// We'll draw this with a thicker stroke
-	Stroke thick = new BasicStroke (4.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL);       
-	
-	// for hex colors, see (e.g.) http://en.wikipedia.org/wiki/List_of_colors
-	// #002FA7 is "International Klein Blue" according to Wikipedia
-	// In HTML we use #, but in Java (and C/C++) its 0x
-	
+	Stroke thick = new BasicStroke (4.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL);
+
 	Stroke orig=g2.getStroke();
 	g2.setStroke(thick);
-	g2.setColor(new Color(0x002FA7)); 
-	g2.draw(h2); 
-	
-	// Draw two houses with Windows
-	
-	HouseWithWindows hw1 = new HouseWithWindows(50,350,40,75);
-	HouseWithWindows hw2 = new HouseWithWindows(200,350,200,100);
-	
-	g2.draw(hw1);
-	g2.setColor(new Color(0x8F00FF)); g2.draw(hw2);
-	
+	g2.setColor(new Color(0x002FA7));
+	g2.draw(d2);
+
 	// @@@ FINALLY, SIGN AND LABEL YOUR DRAWING
 	
 	g2.setStroke(orig);
 	g2.setColor(Color.BLACK); 
-	g2.drawString("A few houses by Elliott Hong", 20,20);
+	g2.drawString("A few dominos by Elliott Hong", 20,20);
     }
 
 
-    /** Draw a picture with a few houses and coffee cups
+    /** Draw a few numbered dominos
      */
     public static void drawPicture2(Graphics2D g2) {
 
-	// Draw some coffee cups.
-	
-	CoffeeCup large = new CoffeeCup(100,50,225,150);
-	CoffeeCup smallCC = new CoffeeCup(20,50,40,30);
-	CoffeeCup tallSkinny = new CoffeeCup(20,150,20,40);
-	CoffeeCup shortFat = new CoffeeCup(20,250,40,20);
-	
-	g2.setColor(Color.RED);     g2.draw(large);
-	g2.setColor(Color.GREEN);   g2.draw(smallCC);
-	g2.setColor(Color.BLUE);    g2.draw(tallSkinny);
-	g2.setColor(Color.MAGENTA); g2.draw(shortFat);
-	
-	House h1 = new House(100,250,50,75);
-	g2.setColor(Color.CYAN); g2.draw(h1);
-	
-	// Make a black house that's half the size, 
-	// and moved over 150 pixels in x direction
-	Shape h2 = ShapeTransforms.scaledCopyOfLL(h1,0.5,0.5);
-	h2 = ShapeTransforms.translatedCopyOf(h2,150,0);
-	g2.setColor(Color.BLACK); g2.draw(h2);
-	
-	// Here's a house that's 4x as big (2x the original)
-	// and moved over 150 more pixels to right.
-	h2 = ShapeTransforms.scaledCopyOfLL(h2,4,4);
-	h2 = ShapeTransforms.translatedCopyOf(h2,150,0);
-	
+	double dominoOneX = 15;
+	double dominoTwoX = 50;
+	double dominoThreeX = 100;
+
+	double dominoY = 50;
+
+	double dominoOneWidth = 30;
+	double dominoTwoWidth = 40;
+	double dominoThreeWidth = 50;
+
+	double dominoOneHeight = 60;
+	double dominoTwoHeight = 80;
+	double dominoThreeHeight = 100;
+
+	// Draw some DominoPieces
+	DominoPiece first = new DominoPiece(dominoOneX, dominoY, dominoOneWidth, dominoOneHeight);
+	DominoPiece second = new DominoPiece(dominoTwoX, dominoY, dominoTwoWidth, dominoTwoHeight);
+	DominoPiece third = new DominoPiece(dominoThreeX, dominoY, dominoThreeWidth, dominoThreeHeight);
+
+	g2.setColor(Color.RED);
+	g2.draw(first);
+
+	g2.setColor(Color.GREEN);
+	g2.draw(second);
+
+	g2.setColor(Color.BLUE);
+	g2.draw(third);
+
+
 	// We'll draw this with a thicker stroke
 	Stroke thick = new BasicStroke (4.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL);       
-	
-	// for hex colors, see (e.g.) http://en.wikipedia.org/wiki/List_of_colors
-	// #002FA7 is "International Klein Blue" according to Wikipedia
-	// In HTML we use #, but in Java (and C/C++) its 0x
-	
+
 	Stroke orig=g2.getStroke();
-	g2.setStroke(thick);
-	g2.setColor(new Color(0x002FA7)); 
-	g2.draw(h2); 
-	
-	// Draw two houses with Windows
-	
-	HouseWithWindows hw1 = new HouseWithWindows(50,350,40,75);
-	HouseWithWindows hw2 = new HouseWithWindows(200,350,200,100);
-	
-	g2.draw(hw1);
-	g2.setColor(new Color(0x8F00FF)); 
 
-	// Rotate the second house 45 degrees around its center.
-	Shape hw3 = ShapeTransforms.rotatedCopyOf(hw2, Math.PI/4.0);
-
-	g2.draw(hw3);
-	
 	// @@@ FINALLY, SIGN AND LABEL YOUR DRAWING
-	
 	g2.setStroke(orig);
 	g2.setColor(Color.BLACK); 
-	g2.drawString("A bunch of Coffee Cups and a few houses by Elliott Hong", 20,20);
+	g2.drawString("A few dominos by Elliott Hong", 20,20);
     }
   
     /** Draw a different picture with a few houses and coffee cups
