@@ -44,6 +44,7 @@ public class GameBoy extends GeneralPathWrapper implements Shape
         //Make main body of the GameBoy
 	Rectangle2D.Double mainPart = new Rectangle2D.Double(x, y, width, height);
 
+	//Determine size of the two screens based on the users input of the width and height
 	double screen1Width = .9 * width;
 	double screen1Height = .4 * height;
 	double screen2Width = .7 * screen1Width;
@@ -54,12 +55,14 @@ public class GameBoy extends GeneralPathWrapper implements Shape
 	//double heiDiff1 = height - screen1Height;
 	//double heiDiff2 = height - screen2Height;
 
+	//Make two rectangles that will be the two screens
 	Rectangle2D.Double screen1 = new Rectangle2D.Double(x+(widDiff1/2), y+(widDiff1/2), screen1Width, screen1Height); 
 	Rectangle2D.Double screen2 = new Rectangle2D.Double(x+(widDiff1*1.75), y+(widDiff1*1.75), screen2Width, screen2Height);
 	
         // Remember that y goes DOWN the page,
         // so we ADD to y to get a "lower" value on the screen
 	
+	//Add the six lines the GameBoy has where the sound comes out
 	Line2D.Double line1 = new Line2D.Double(x+width-16, y+height-12, x+width-12, y+height-4);
 	Line2D.Double line2 = new Line2D.Double(x+width-14, y+height-14, x+width-10, y+height-6);
 	Line2D.Double line3 = new Line2D.Double(x+width-12, y+height-16, x+width-8, y+height-8);

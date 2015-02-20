@@ -16,7 +16,7 @@ import edu.ucsb.cs56.w15.drawings.utilities.ShapeTransforms;
 import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 
 /**
-   A vector drawing of a GameBoy that implements
+   A vector drawing of a GameBoy with Buttons that implements
    the Shape interface, and so can be drawn, as well as
    rotated, scaled, etc.
       
@@ -29,10 +29,10 @@ public class GameBoyWithButtons extends GameBoy implements Shape
     /**
        Constructor
 
-       @param x x coord of upper left corner of GameBoy
-       @param y y coord of upper left corner of GameBoy
-       @param width width of the GameBoy
-       @param height of GameBoy
+       @param x x coord of upper left corner of GameBoyWithButtons
+       @param y y coord of upper left corner of GameBoyWithButtons
+       @param width width of the GameBoyWithButtons
+       @param height of GameBoyWithButtons
      */
     public GameBoyWithButtons(double x, double y, double width, double height)
     {
@@ -43,15 +43,17 @@ public class GameBoyWithButtons extends GameBoy implements Shape
 	GeneralPath gp = this.get();
 
 	// Need to add control pad, which can just be two filled in rectangles
+	//Determine the width and height of the two rectangles
 	double lRWidth = .2*width;
 	double uDHeight = lRWidth;
 	double lRHeight = .05*height;
 	double uDWidth = lRHeight;
+	//Figure out the x and y coordinates for the top corner of each rectangle
 	double xcoord1 = x + width * .1;
 	double xcoord2 = xcoord1 + (lRWidth * .25);
 	double ycoord1 = y + (height * .55);
 	double ycoord2 = ycoord1 - (lRHeight/2);
-
+	//Make the rectangles
 	Rectangle2D.Double leftRight = new Rectangle2D.Double(xcoord1,ycoord1,lRWidth, lRHeight);
 	Rectangle2D.Double upDown = new Rectangle2D.Double(xcoord2,ycoord2,uDWidth,uDHeight);
 	
@@ -66,6 +68,7 @@ public class GameBoyWithButtons extends GameBoy implements Shape
 	Ellipse2D.Double a = new Ellipse2D.Double(xa, ya, diameter, diameter);
 	Ellipse2D.Double b = new Ellipse2D.Double(xb, yb, diameter, diameter);
 
+	//Put everything together
 	GeneralPath wholegb = this.get();
 	wholegb.append(leftRight, false);
 	wholegb.append(upDown, false);
