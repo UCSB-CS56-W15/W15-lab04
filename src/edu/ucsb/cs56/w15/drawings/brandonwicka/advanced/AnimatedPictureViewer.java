@@ -8,14 +8,15 @@ public class AnimatedPictureViewer {
 
     private DrawPanel panel = new DrawPanel();
     
-    private Spoon spoon = new Spoon(200, 50, 100, 100);
+    private Spoon spoon = new Spoon(100, 20, 300, 100);
     
-    Thread anim;   
+    Thread a;   
     
-    private int x = 100;
+    private int x = 300;
     private int y = 100;
     
     private int dx = 5;
+    private int dy = 5;
 
     public static void main (String[] args) {
       new AnimatedPictureViewer().go();
@@ -26,22 +27,21 @@ public class AnimatedPictureViewer {
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
       frame.getContentPane().add(panel);
-      frame.setSize(640,480);
+      frame.setSize(600,600);
       frame.setVisible(true);
       
       frame.getContentPane().addMouseListener(new MouseAdapter() {
         public void mouseEntered(MouseEvent e){
         System.out.println("mouse entered");
-          anim = new Animation();
-          anim.start();
+          a = new Animation();
+          a.start();
         }
 
         public void mouseExited(MouseEvent e){        
           System.out.println("Mouse exited");
-          // Kill the animation thread
-          anim.interrupt();
-          while (anim.isAlive()){}
-          anim = null;         
+          a.interrupt();
+          while (a.isAlive()){}
+          a = null;         
           panel.repaint();        
         }
       });
@@ -57,9 +57,9 @@ public class AnimatedPictureViewer {
           g2.setColor(Color.white);
           g2.fillRect(0,0,this.getWidth(), this.getHeight());
 
-          // Draw the Ipod
+          // Draw the Spoon
           g2.setColor(Color.BLUE);
-          Spoon test = new Spoon(200, 50, x, y);
+          Spoon test = new Spoon(100, 20, x, y);
           g2.draw(test);
        }
     }
@@ -68,19 +68,23 @@ public class AnimatedPictureViewer {
       public void run() {
         try {
           while (true) {
-            // Bounce off the walls
+            // Bounce off the walls randomly
 
-            if (x >= 480) { dx = -5; }
-            if (x <= 160) { dx = 5; }
+            if (x >= 450) { dx = -5; }
+            if (x <= 250) { dx = 5; }
+	    if (y >= 450) { dy = -5; }
+	    if (y <= 250) { dy = 5; }
 	      
+	    
             x += dx;
+	    y += dy;
 	 
             panel.repaint();
             Thread.sleep(50);
           }
         } catch(Exception ex) {
           if (ex instanceof InterruptedException) {
-            // Do nothing - expected on mouseExited
+            // Do nothing
           } else {
             ex.printStackTrace();
             System.exit(1);
