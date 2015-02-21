@@ -1,10 +1,11 @@
 package edu.ucsb.cs56.w15.drawings.jeffrey.advanced;
 import javax.swing.JFrame;
 import java.awt.event.*;
+import java.lang.Integer.*;
 
-/** A viewer class to see a picture I drew with 
- *  just three simple Java graphics objects, namely
- *  Rectangle, Line2D.Double, Ellipse2D.Double
+/** A viewer class to see my clock animation using
+ * the DisarmedClock and DisarmedAlarmClock classes.
+ * Also requires the AnimatedPictureComponent class.
  *  
  * @author Jeffrey Chen
  * @version for UCSB CS56, W15, 02/20/2015
@@ -17,25 +18,20 @@ public class AnimatedPictureViewer extends JFrame
     static final double xCoord = 220;
     static final double yCoord = 150;
     static final double radius = 100;
-    static final double animationSpeed = 1;
-    static final double second = 1000; // 1000 milliseconds
+    static final double animationSpeed = 200;
 
     /** constructs a JFrame with an animated picture inside
      */
     public AnimatedPictureViewer() {
-		// If user passed a command line argument, 
-		// get which picture we want to display from the user
-		
 		// Set the size to whatever size you like (width, height)
 		// For projects you turn in, no bigger than 640,480	
 		setSize(640,480);
 		
 		// Set your own title
-		setTitle("Jeffrey Chen's Animated Drawing");
+		setTitle("Jeffrey Chen's Animated Clock");
 		
 		// Always do this so that the red X (or red circle) works
 		// to close the window. 
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		// Instantiate your drawing as a "component"
@@ -45,7 +41,6 @@ public class AnimatedPictureViewer extends JFrame
 		// Always add your component to the frame 
 		// and then make the window visible
 		add(component);
-
 		getContentPane().addMouseListener(
 			new MouseAdapter(){
 			    public void mouseEntered(MouseEvent e){
@@ -53,6 +48,7 @@ public class AnimatedPictureViewer extends JFrame
 					// the animation on it.
 					animate = new Animate();
 					animate.start();
+					System.out.println("Running");
 			    }//end mouseEntered
 			    
 			    public void mouseExited(MouseEvent e){
@@ -63,6 +59,7 @@ public class AnimatedPictureViewer extends JFrame
 					// collection.
 					while (animate.isAlive()){}//loop;
 					animate = null;
+					System.out.println("Stopped");
 			    }//end MouseExited
 			}//end new MouseAdapter
 		);//end addMouseListener()
@@ -70,8 +67,14 @@ public class AnimatedPictureViewer extends JFrame
 		setVisible(true);
     }
 
+    /** Animates picture component if mouse cursor within frame
+    */
     class Animate extends Thread{
 		public void run() {//begin run method
+			// Increase/decrease delay based on animationSpeed
+			Double delayTemp = new Double(1000*(1/animationSpeed));
+			int delay = delayTemp.intValue();
+
 		    try{
 				//The following code will continue to
 				// loop until the animation thread is
@@ -79,7 +82,8 @@ public class AnimatedPictureViewer extends JFrame
 				// method.               
 				while(true){
 					//Display several images in succession.
-					display(1000);
+
+					display(delay);
 				}//end while loop  
 			}catch(Exception ex){
 				if(ex instanceof InterruptedException){
@@ -94,22 +98,22 @@ public class AnimatedPictureViewer extends JFrame
 		}//end run
 		//-----------------------------------------//
 
-		//This method displays an image and sleeps
+		// This method displays an image and sleeps
 		// for a prescribed period of time.  It 
 		// terminates and throws an      
 		// InterruptedException when interrupted
 		// by the mouseExited method.     
 		void display(int delay)
 		    throws InterruptedException{
-		    //update the animation
+		    // Update the animation
 		    component.repaint();
-		    //Check interrupt status.  If interrupted
+		    // Check interrupt status.  If interrupted
 		    // while not asleep, force animation to
 		    // terminate.              
 		    if(Thread.currentThread().interrupted())
 				throw(new InterruptedException());
-		    //Delay specified number of msec.
-		    //Terminate animation automatically if
+		    // Delay specified number of msec.
+		    // Terminate animation automatically if
 		    // interrupted while asleep.  
 		    Thread.currentThread().sleep(delay);
 		}//end display method    
