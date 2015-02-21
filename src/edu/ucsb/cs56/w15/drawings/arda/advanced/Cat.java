@@ -1,3 +1,4 @@
+
 package edu.ucsb.cs56.w15.drawings.arda.advanced;
 import java.awt.geom.GeneralPath; // combinations of lines and curves
 import java.awt.geom.AffineTransform; // translation, rotation, scale
@@ -14,9 +15,6 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Arc2D;  // ARCS
 import java.awt.geom.Ellipse2D;  // ellipses and circles
 import java.awt.geom.GeneralPath; // combinations of lines and curves
-
-
-import static java.lang.Math.sqrt;
 
 
 import edu.ucsb.cs56.w15.drawings.utilities.ShapeTransforms;
@@ -39,39 +37,41 @@ public class Cat extends GeneralPathWrapper implements Shape
 
        @param x x coord of lower left corner of house
        @param y y coord of lower left corner of house
-       @param radius, the radius of the cat face circle
+       @param radius the radius of the cat face circle
      */
     public Cat(double x, double y, double radius)
     {
     
-        // Rather than having to scale at the end, we can just
-        // draw things the right way to begin with, using the
-        // x, y, width and height.   If you haven't already
-        // hard coded a particular drawing, this may be an easier
-        // way.
-        
+
+        double xSpecial = Math.sqrt(3.0/4.0);
+        double ySpecial = Math.sqrt(1-(1.0/16.0));
+
+
+       
         Circle mainCircle = new Circle(x, y, radius);
 
 
 
         // Assemble left ear
-        Line2D.Double leftEar_l = 
-            new Line2D.Double (x-sqrt(12)*radius, y - (4-sqrt(12))*radius,
-                            x-(3/8)*radius, y - (5/8)*radius);
-
         Line2D.Double leftEar_r = 
-            new Line2D.Double (x-(3/8)*radius, y - (5/8)*radius,
-                            x-(4-sqrt(12))*radius, y - sqrt(12)*radius);
- 
+            new Line2D.Double (x-radius*(0.25), y-(ySpecial)*radius, 
+                                x - radius*(0.75),y-(1.20)*radius);
 
-        // Assemble right ear
-        Line2D.Double rightEar_l = 
-            new Line2D.Double (x+sqrt(12)*radius, y - (4-sqrt(12))*radius,
-                            x + (3/8)*radius, y - (5/8)*radius);
+        Line2D.Double leftEar_l = 
+            new Line2D.Double (x-radius*(xSpecial), y-(0.5)*radius, 
+                                x - radius*(0.75),y-(1.20)*radius);
+
+
+
+
 
         Line2D.Double rightEar_r = 
-            new Line2D.Double (x+(3/8)*radius, y - (5/8)*radius,
-                            x+(4-sqrt(12))*radius, y - sqrt(12)*radius);
+            new Line2D.Double (x+radius*(xSpecial), y-(0.5)*radius, 
+                                x + radius*(0.75),y-(1.20)*radius);
+
+        Line2D.Double rightEar_l = 
+            new Line2D.Double (x+radius*(0.25), y-(ySpecial)*radius, 
+                                x + radius*(0.75),y-(1.20)*radius);
 
 
 
@@ -79,23 +79,31 @@ public class Cat extends GeneralPathWrapper implements Shape
 
         // Assemble Eyes
         Line2D.Double leftEye = 
-            new Line2D.Double(x - (1/8)*radius, y - (1/8)*radius, 
-                            x - (1/8)*radius, y - (2/8)*radius);
+            new Line2D.Double(x - (0.25)*radius, y - (0.25)*radius, 
+                            x - (0.25)*radius, y - (0.5)*radius);
 
         Line2D.Double rightEye = 
-            new Line2D.Double(x + (1/8)*radius, y - (1/8)*radius, 
-                            x + (1/8)*radius, y - (2/8)*radius);
+            new Line2D.Double(x + (0.25)*radius, y - (0.25)*radius, 
+                            x + (0.25)*radius, y - (0.5)*radius);
 
 
 
 
         // Assemble Mouth
         Arc2D.Double mouthLeft = 
-            new Arc2D.Double(x-(2/8)*radius, y+(1/8)*radius, (2/8)*radius, (1/8)*radius, 0, 180, Arc2D.OPEN);
+            new Arc2D.Double(x-(0.5)*radius, y, 
+                                (0.5)*radius, (0.5)*radius, 
+                                180, 180, 
+                                Arc2D.OPEN);
 
-            // same as mouthLeft, but starts at x = center, y = center - radius/8
+            // same as mouthLeft, but starts at x = center, y = center
         Arc2D.Double mouthRight = 
-            new Arc2D.Double(x, y+(1/8)*radius, (2/8)*radius, (1/8)*radius, 0, 180, Arc2D.OPEN);
+            new Arc2D.Double(x, y, 
+                                (0.5)*radius, (0.5)*radius, 
+                                180, 180, 
+                                Arc2D.OPEN);
+
+
 
 
 
@@ -107,12 +115,18 @@ public class Cat extends GeneralPathWrapper implements Shape
 
         wholeCat.append(leftEar_l, false);
         wholeCat.append(leftEar_r, false);
-        
+
+        wholeCat.append(rightEar_r, false);
         wholeCat.append(rightEar_l, false);
-        wholeCat.append(rightEar_l, false);
-        
+
+
+        wholeCat.append(leftEye, false);
+        wholeCat.append(rightEye, false);
+
         wholeCat.append(mouthLeft, false);
         wholeCat.append(mouthRight, false);
+
+
 
 
     }

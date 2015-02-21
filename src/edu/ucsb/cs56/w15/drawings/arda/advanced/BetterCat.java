@@ -19,8 +19,7 @@ import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
  *  @author Arda Ungun (minimal modifications)
  *  @version for UCSB CS56, W15, 02/20/2015
 */
-public class BetterCat extends Cat implements Shape
-{
+public class BetterCat extends Cat implements Shape {
     /**
      * Constructor for objects of class CoffeeCup
      */
@@ -36,16 +35,16 @@ public class BetterCat extends Cat implements Shape
     // Assemble Nose
 
 	Line2D.Double noseTop = 
-		new Line2D.Double(x-(1/8)*radius, y, 
-						x + (1/8)*radius, y);
+		new Line2D.Double(x-(0.25)*radius, y, 
+						x + (0.25)*radius, y);
 
 	Line2D.Double noseLeft =
-		new Line2D.Double(x-(1/8)*radius, y,
-						x, y+(1/8)*radius);
+		new Line2D.Double(x-(0.25)*radius, y,
+						x, y+(0.25)*radius);
 
 	Line2D.Double noseRight =
-		new Line2D.Double(x-(1/8)*radius, y,
-						x, y+(1/8)*radius);
+		new Line2D.Double(x+(0.25)*radius, y,
+						x, y+(0.25)*radius);
 
 
 
@@ -54,16 +53,16 @@ public class BetterCat extends Cat implements Shape
 	// Right Whiskers (3 total)
 
 	Line2D.Double rightWhisker_top = 
-		new Line2D.Double(x+(3/8)*radius, y - (1/8)*radius,
-						x+(5/8)*radius, y - (2/8)*radius);
+		new Line2D.Double(x+(0.75)*radius, y - (0.25)*radius,
+						x+(5.0/4.0)*radius, y - (0.5)*radius);
 
 	Line2D.Double rightWhisker_mid = 
-		new Line2D.Double(x+(3/8)*radius, y,
-						x+(5/8)*radius, y);
+		new Line2D.Double(x+(0.75)*radius, y,
+						x+(1.5)*radius, y);
 
 	Line2D.Double rightWhisker_bot = 
-		new Line2D.Double(x+(3/8)*radius, y + (1/8)*radius,
-						x+(5/8)*radius, y + (2/8)*radius);
+		new Line2D.Double(x+(0.75)*radius, y + (0.25)*radius,
+						x+(5.0/4.0)*radius, y + (0.5)*radius);
 
 
 
@@ -72,16 +71,16 @@ public class BetterCat extends Cat implements Shape
 	// Left Whiskers (3 total)
 
 	Line2D.Double leftWhisker_top = 
-		new Line2D.Double(x-(3/8)*radius, y - (1/8)*radius,
-						x-(5/8)*radius, y - (2/8)*radius);
+		new Line2D.Double(x-(0.75)*radius, y - (0.25)*radius,
+						x-(5.0/4.0)*radius, y - (0.5)*radius);
 
 	Line2D.Double leftWhisker_mid = 
-		new Line2D.Double(x-(3/8)*radius, y,
-						x-(5/8)*radius, y);
+		new Line2D.Double(x-(0.75)*radius, y,
+						x-(1.5)*radius, y);
 
 	Line2D.Double leftWhisker_bot = 
-		new Line2D.Double(x-(3/8)*radius, y + (1/8)*radius,
-						x-(5/8)*radius, y + (2/8)*radius);
+		new Line2D.Double(x-(0.75)*radius, y + (0.25)*radius,
+						x-(5.0/4.0)*radius, y + (0.5)*radius);
 
 
 
@@ -91,15 +90,22 @@ public class BetterCat extends Cat implements Shape
 	// get the GeneralPath that we are going to append the new lines to
 	GeneralPath gp = this.get();
 
-
-
-
 	// add nose to drawing
+	gp.append(noseTop, false);
+	gp.append(noseLeft, false);
+	gp.append(noseRight, false); 
 
-        GeneralPath wholeHouse = this.get();
-        wholeHouse.append(win1, false);
-        wholeHouse.append(win2, false);
-        wholeHouse.append(win3, false); 
+	// add right whiskers to drawing
+	gp.append(rightWhisker_bot, false);
+	gp.append(rightWhisker_mid, false);
+	gp.append(rightWhisker_top, false); 
+
+	// add right whiskers to drawing
+	gp.append(leftWhisker_bot, false);
+	gp.append(leftWhisker_mid, false);
+	gp.append(leftWhisker_top, false); 
+
+
     } // class BetterCat
 
 }
