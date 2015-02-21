@@ -15,8 +15,8 @@ import edu.ucsb.cs56.w15.drawings.utilities.ShapeTransforms;
 import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 /**
    A Cat face
-      
- *  @author Arda Ungun (minimal modifications)
+    @author Phill Conrad
+ *  @author Arda Ungun
  *  @version for UCSB CS56, W15, 02/20/2015
 */
 public class BetterCat extends Cat implements Shape {
