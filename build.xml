@@ -24,7 +24,7 @@
    <!-- The following property will be used by the grader; grader
 	can change it from edtropiax to whomever grader is grading in that
 	moment. -->
-   <property name="studentName" value="jeffrey"/>
+   <property name="studentName" value="edtropiax"/>
    
    <path id="project.class.path">
          <pathelement location="build"/>
