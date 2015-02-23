@@ -14,9 +14,10 @@ public class AnimatedPictureViewer {
     
     private int x = 100;
     private int y = 100;
-    
+    private int a = 50;
+    private int b = 100;
     private int dx = 5;
-
+    private int da = 1;
     public static void main (String[] args) {
       new AnimatedPictureViewer().go();
     }
@@ -57,12 +58,12 @@ public class AnimatedPictureViewer {
         Graphics2D g2 = (Graphics2D) g;
 
          // Clear the panel first
-          g2.setColor(Color.white);
+          g2.setColor(Color.yellow);
           g2.fillRect(0,0,this.getWidth(), this.getHeight());
 
           // Draw the Ipod
           g2.setColor(Color.RED);
-          IphoneWithHomeButton test = new IphoneWithHomeButton(x, y, 50, 100);
+          IphoneWithHomeButton test = new IphoneWithHomeButton(x, y, a, b);
           g2.draw(test);
        }
     }
@@ -73,9 +74,16 @@ public class AnimatedPictureViewer {
           while (true) {
             // Bounce off the walls
 
-            if (x >= 400) { dx = -5; }
-            if (x <= 50) { dx = 5; }
-            
+            if (x >= 400) { 
+		dx = -5;
+		da = -1;	
+	    }
+            if (x <= 50) { 
+		dx = 5; 
+		da = 1;
+	    }
+            a += da;
+	    b += da; 
             x += dx;                
             panel.repaint();
             Thread.sleep(50);
