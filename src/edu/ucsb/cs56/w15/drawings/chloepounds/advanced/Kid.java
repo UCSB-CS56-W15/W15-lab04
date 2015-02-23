@@ -1,0 +1,68 @@
+package edu.ucsb.cs56.w15.drawings.chloepounds.advanced;
+import java.awt.geom.GeneralPath; // combinations of lines and curves
+import java.awt.geom.AffineTransform; // translation, rotation, scale
+import java.awt.Shape; // general class for shapes
+
+// all imports below this line needed if you are implementing Shape
+import java.awt.geom.Point2D;
+import java.awt.geom.Line2D;
+import java.awt.geom.Ellipse2D;  
+import java.awt.geom.PathIterator;
+import java.awt.geom.AffineTransform;
+
+
+import edu.ucsb.cs56.w15.drawings.utilities.ShapeTransforms;
+import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
+
+/**
+   A vector drawing of a kid that implements
+   the Shape interface, and so can be drawn, as well as
+   rotated, scaled, etc.
+      
+   @author Chloe Pounds
+*/
+public class Kid extends GeneralPathWrapper implements Shape
+{
+    /** 
+	Constructor
+	@param x x is the bottom left leg x coordinate
+	@param y y is the bottom left leg y coordinate
+	@param width width is the distance from left leg to right leg
+    */
+    public Kid(double x, double y, double width, double height)
+    {
+	double legHeight = .5 * height;
+	double torsoHeight = .75 * legHeight;
+	double headHeight = .25 * legHeight;
+	
+	double centerAxisX = width * .5;
+
+	Line2D.Double leftLeg = new Line2D.Double(x, y, x + centerAxisX, 
+						  legHeight + y);
+	Line2D.Double rightLeg = new Line2D.Double(x + width, y, 
+						   x + centerAxisX,
+						   legHeight + y);
+	Line2D.Double torso = new Line2D.Double(x + centerAxisX, y + legHeight,
+						x + centerAxisX, 
+						y + height - headHeight);
+    
+	Line2D.Double rightArm = new Line2D.Double(x, y + torsoHeight, 
+						   x + centerAxisX, 
+						   y + legHeight + 
+						   .75 * torsoHeight);
+	Line2D.Double leftArm = new Line2D.Double(x + width, y + torsoHeight,
+						  x + centerAxisX, 
+						  y + legHeight + 
+						  .75 * torsoHeight);
+	Circle head = new Circle(x + centerAxisX, y + height, 
+				 .25 * width); 
+					     
+	GeneralPath wholeKid = this.get();
+	wholeKid.append(head, false);
+	wholeKid.append(torso, false);
+	wholeKid.append(leftArm, false);
+	wholeKid.append(rightArm, false);
+	wholeKid.append(rightLeg, false);
+	wholeKid.append(leftLeg, false);
+    }
+}
