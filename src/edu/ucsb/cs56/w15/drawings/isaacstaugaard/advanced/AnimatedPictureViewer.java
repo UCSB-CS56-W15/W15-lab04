@@ -16,7 +16,19 @@ public class AnimatedPictureViewer {
     private int y = 100;
     
     private int dx = 5;
+    private int dy = 5;
 
+    private int R = 0;
+    private int G = 0;
+    private int B = 255;
+    private Color rgb = new Color(R, G, B);
+
+    /*    public void redBlueColor() {           Use a random function -- do this eventually
+	if (B > 100) {B = B - 1; R = 0;}
+	else if (B <= 100) { B = 0; G = 255;}
+	rgb = new Color(R, G, B);
+	}*/
+    
     public static void main (String[] args) {
       new AnimatedPictureViewer().go();
     }
@@ -43,7 +55,7 @@ public class AnimatedPictureViewer {
           while (anim.isAlive()){}
           anim = null;         
           panel.repaint();        
-        }
+	  } 
       });
       
     } // go()
@@ -58,9 +70,24 @@ public class AnimatedPictureViewer {
           g2.fillRect(0,0,this.getWidth(), this.getHeight());
 
           // Draw the Basketball Hoop
-          g2.setColor(Color.BLACK);
+	  
+          g2.setColor(Color.ORANGE);
+	  Stroke thick = new BasicStroke (4.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL);       
+	  g2.setStroke(thick);
           BasketballHoop practice = new BasketballHoop(x, y, 125, 125);
           g2.draw(practice);
+	  if(x >= 250 && y >= 130){
+	      g2.setColor(rgb);
+	      g2.draw(practice);
+	  }
+	  if(x >= 250 && y < 130){
+	      g2.setColor(Color.BLACK);
+	      g2.draw(practice);
+	  }
+	  if(x < 250 && y >= 130){
+	      g2.setColor(Color.GREEN);
+	      g2.draw(practice);
+	  }
        }
     }
     
@@ -70,9 +97,14 @@ public class AnimatedPictureViewer {
           while (true) {
             // Bounce off the walls
 
-            if (x >= 400) { dx = -5; }
-            if (x <= 50) { dx = 5; }
-            
+	    if (x >= 480) { dx = -5;}
+	    if (x <= 30) { dx = 5; }
+            if (y >= 300) {dy = -5; }
+	    if (y <= 20) {dy = 5; }
+ 
+	    panel.getGraphics().setColor(rgb);
+
+	    y += dy;
             x += dx;                
             panel.repaint();
             Thread.sleep(50);
