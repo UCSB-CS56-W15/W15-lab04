@@ -1,24 +1,25 @@
-package edu.ucsb.cs56.w14.drawings.andrewberls.advanced;
+package edu.ucsb.cs56.w15.drawings.emorozova.advanced;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class IpodAnimation {
+public class AnimatedPictureViewer {
 
     private DrawPanel panel = new DrawPanel();
     
-    private Ipod ipod = new Ipod(100, 100, 100);
-    
     Thread anim;   
     
-    private int x = 100;
-    private int y = 100;
+    private int x = 200;
+    private int y = 200;
+
+    private int x2 = 200;
+    private int y2 = 200;
     
     private int dx = 5;
 
     public static void main (String[] args) {
-      new IpodAnimation().go();
+      new AnimatedPictureViewer().go();
     }
 
     public void go() {
@@ -58,9 +59,20 @@ public class IpodAnimation {
           g2.fillRect(0,0,this.getWidth(), this.getHeight());
 
           // Draw the Ipod
-          g2.setColor(Color.RED);
-          Ipod test = new Ipod(x, y, 100);
+          g2.setColor(Color.black);
+          StripedLighthouse test = new StripedLighthouse(100, 200, 70, 160);
           g2.draw(test);
+
+	  // Draw wave
+	  g2.setColor(Color.blue);
+	  Wave w = new Wave(x + 20, y-20, 350, 20);
+	  g2.draw(w);
+
+	  Wave w2 = new Wave(x2, y2-10, 350, 20);
+	  g2.draw(w2);
+
+	  Wave w3 = new Wave(x+20, y, 350, 20);
+	  g2.draw(w3);
        }
     }
     
@@ -70,10 +82,16 @@ public class IpodAnimation {
           while (true) {
             // Bounce off the walls
 
-            if (x >= 400) { dx = -5; }
-            if (x <= 50) { dx = 5; }
+	       if (x >= 200) { dx = -1; }
+	       if (x <= 150) { dx = 1; }
+
+	       
             
-            x += dx;                
+	       x += dx;   
+	       x2 += (-1*dx);
+	      
+
+	      
             panel.repaint();
             Thread.sleep(50);
           }
