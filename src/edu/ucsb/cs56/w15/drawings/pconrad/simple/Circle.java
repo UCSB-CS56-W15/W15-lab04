@@ -1,4 +1,4 @@
-package edu.ucsb.cs56.w15.drawings.pconrad.simple;
+package edu.ucsb.cs56.w15.drawings.pmsosa.simple;
 
 
 
@@ -6,7 +6,7 @@ package edu.ucsb.cs56.w15.drawings.pconrad.simple;
  * Circle extends Ellipse2D to make it easier to draw circles
  * because the parameters to the constructor are more convenient
  * 
- * @author P. Conrad  
+ * @author P. Conrad 
  * @version CS56, Spring 2013, UCSB
  */
 public class Circle extends java.awt.geom.Ellipse2D.Double implements java.awt.Shape

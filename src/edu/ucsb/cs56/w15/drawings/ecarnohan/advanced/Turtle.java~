@@ -1,0 +1,109 @@
+package edu.ucsb.cs56.w15.drawings.ecarnohan.advanced;
+import java.awt.geom.GeneralPath; // combinations of lines and curves
+import java.awt.geom.AffineTransform; // translation, rotation, scale
+import java.awt.Shape; // general class for shapes
+
+// all imports below this line needed if you are implementing Shape
+import java.awt.geom.Point2D; 
+import java.awt.geom.Line2D; 
+import java.awt.geom.Rectangle2D;
+import java.awt.Rectangle;
+import java.awt.geom.PathIterator;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Ellipse2D;  // ellipses and circles
+
+import edu.ucsb.cs56.w15.drawings.utilities.ShapeTransforms;
+import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
+
+/**
+   A vector drawing of a turtle that implements
+   the Shape interface, and so can be drawn, as well as
+   rotated, scaled, etc.
+      
+   @author Phill Conrad 
+   @version for CS56, Winter 11, UCSB
+   
+*/
+public class Turtle extends GeneralPathWrapper implements Shape
+{
+    /**
+       Constructor
+
+       @param x x coord of upper left corner of turtle
+       @param y y coord of upper left corner of turtle
+       @param length how tall the turtle is (width param in constructor)
+       @param width how fat the turtle is (height param in constructor)
+     */
+    public Turtle(double x, double y, double length, double width)
+    {
+    
+        // Rather than having to scale at the end, we can just
+        // draw things the right way to begin with, using the
+        // x, y, & radius.   If you haven't already
+        // hard coded a particular drawing, this may be an easier
+        // way.
+        
+        
+	// draw Turtle's body
+        
+        Ellipse2D.Double body = 
+            new Ellipse2D.Double(x, y, length, width);
+                          
+        // make the head.   Remember that y goes DOWN the page,
+        // so we ADD to y to get a "lower" value on the screen
+        
+        Ellipse2D.Double head  = 
+            new Ellipse2D.Double(x+length, y + width/2.0,
+                               length/4.0, width/4.0);
+        
+	// make the legs                       
+ 
+	Line2D.Double bLeftLeg1 = 
+	    new Line2D.Double(x + length/4.0, y + width/10.0,
+			      x + length/11.0, y - width/8.0);
+
+	Line2D.Double bLeftLeg2 = 
+	    new Line2D.Double(x + length/8.0, y+ width/5.0,
+			      x + length/11.0, y - width/8.0);
+
+	Line2D.Double bRightLeg1 = 
+	    new Line2D.Double(x + length/4.0, y + width - width/10.0,
+			      x + length/11.0, y + width*1.10);
+
+	Line2D.Double bRightLeg2 = 
+	    new Line2D.Double(x + length/8.0, y + width - width/5.0,
+			      x + length/11.0, y + width*1.10);
+
+	Line2D.Double fLeftLeg1 =
+	    new Line2D.Double(x + length*0.8, y + width/10.0,
+			      x + length*0.65, y - width/8.0);
+	
+	Line2D.Double fLeftLeg2 = 
+	    new Line2D.Double(x + length*0.65, y - width/8.0,
+			      x + length*0.65, y + width/16.0);
+
+	Line2D.Double fRightLeg1 =  
+	    new Line2D.Double(x + length*0.8, y + width - width/10.0,
+			      x + length*0.65, y + width*1.15); 
+	
+	Line2D.Double fRightLeg2 = 
+	    new Line2D.Double(x + length*0.65, y + width*1.15,
+			      x + length*0.65, y + width);
+	
+
+        // put the whole turtle together
+       
+        GeneralPath wholeTurtle = this.get();
+        wholeTurtle.append(body, false);
+        wholeTurtle.append(head, false);
+        wholeTurtle.append(bLeftLeg1, false); 
+	wholeTurtle.append(bLeftLeg2, false);
+	wholeTurtle.append(bRightLeg1, false);
+	wholeTurtle.append(bRightLeg2, false);
+	wholeTurtle.append(fLeftLeg1, false);
+	wholeTurtle.append(fLeftLeg2, false);
+	wholeTurtle.append(fRightLeg1, false);
+	wholeTurtle.append(fRightLeg2, false);
+    }
+
+}
