@@ -14,9 +14,10 @@ import java.awt.geom.Ellipse2D;
 import edu.ucsb.cs56.w15.drawings.utilities.ShapeTransforms;
 import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 /**
-   A kid with a balloon
+  A class that extends Kid and adds a balloon to the drawing.
       
    @author Chloe Pounds
+
   */
 public class KidWithBalloon extends Kid implements Shape{
     public KidWithBalloon(double x, double y, double width, double height)
@@ -39,9 +40,9 @@ public class KidWithBalloon extends Kid implements Shape{
         Line2D.Double balloonString =
             new Line2D.Double(stringX, stringY, stringX, stringHeight);
         Ellipse2D.Double balloon =
-	    new Ellipse2D.Double(stringX, stringY, 
-				 .25 * height, 
-				  stringHeight); 
+	    new Ellipse2D.Double(x + .75 * width, (y + height) * .75, 
+				 .5 * width, 
+				  .25 * stringHeight); 
 
         // add the balloon to the child's hand 
 
