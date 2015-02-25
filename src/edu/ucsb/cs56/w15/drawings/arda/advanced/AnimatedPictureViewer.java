@@ -49,7 +49,7 @@ public class AnimatedPictureViewer {
 	radius above the bottom of the frame.
 	 - The frame is 640 * 480.
 	 - BC's radius will be 100.
-	 - BC will start at (320, HeightOfWindow - RadiusOfBetterCat - StokeThickness/2)
+	 - BC will start at (320, HeightOfWindow - RadiusOfBetterCat)
 	
 
 
@@ -138,14 +138,6 @@ public class AnimatedPictureViewer {
 	// how we'll keep track of time
 	private int msElapsed = 0;
 
-	// a helper function to calculate the factor of angular or 
-	// translational displacement
-	private double calcFactor(int msElapsed) {
-		// remember, we want 1000 elapsed ms to map to
-		// a full displacement, meaning that factor should be 1
-		// factor = sin(foo), where foo = pi/2 = msElapsed * pi/2000			
-		return Math.sin(msElapsed*(Math.PI/2000.0));
-	}
 
 	// we know our frame will be 640*480, so we can initialize the 
 	// BetterCat's position from these hard-coded points:
@@ -168,20 +160,16 @@ public class AnimatedPictureViewer {
 
 
 
-
-
-
-
-
-	// since the delay for this even is 50 ms, we only need to increment
-	// msElapsed by 50.
-	ActionListener chronometer = new ActionListener()	{
+	// this should execute every 50 ms, from the timer.
+	ActionListener calcFactor  = new ActionListener()	{
 		public void actionPerformed(ActionEvent e)	{
 			msElapsed +=50;
+			factor = Math.sin((msElapsed)*(Math.PI/2000.0));
 		}
 	};
 
-	Timer timer = new Timer(50,chronometer); // 50 millisecond delay
+
+	Timer timer = new Timer(50,calcFactor); // 50 millisecond delay
 
 
 
@@ -212,24 +200,24 @@ public class AnimatedPictureViewer {
 
 		
 		frame.getContentPane().addMouseListener(new MouseAdapter() {
-		public void mouseEntered(MouseEvent e){
-		System.out.println("mouse entered");
-			timer.start();
-			anim = new Animation();
-			anim.start();
-		}
-
-		public void mouseExited(MouseEvent e){ 
-			timer.stop();       
-			System.out.println("Mouse exited");
-			// Kill the animation thread
-			anim.interrupt();
-			while (anim.isAlive()){}
-			anim = null;         
-			panel.repaint();        
-		}
-		});
-		
+				public void mouseEntered(MouseEvent e){
+					System.out.println("mouse entered");
+					timer.start();
+					anim = new Animation();
+					anim.start();
+				}
+	
+				public void mouseExited(MouseEvent e){ 
+					timer.stop();       
+					System.out.println("Mouse exited");
+					// Kill the animation thread
+					anim.interrupt();
+					while (anim.isAlive()){}
+					anim = null;         
+					panel.repaint();        
+				}
+			} // MouseAdapter
+			); //addMouseListenere
 	} // go()
 
 
@@ -252,7 +240,7 @@ public class AnimatedPictureViewer {
 			// then translate and rotate it.
 			Shape bc = new BetterCat(
 								X_ORIG, 
-								this.getHeight()-CAT_RADIUS-2,
+								this.getHeight()-CAT_RADIUS,
 								CAT_RADIUS);
 			bc = ShapeTransforms.translatedCopyOf(
 									bc,
@@ -260,7 +248,7 @@ public class AnimatedPictureViewer {
 									0);
 			bc = ShapeTransforms.rotatedCopyOf(bc, factor*DESIRED_DISPLACEMENT);
 
-			// set the srtoke to thick
+			// set the stroke to thick
 			Stroke thick = new BasicStroke (
 									4.0f, 
 									BasicStroke.CAP_BUTT, 
