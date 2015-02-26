@@ -99,10 +99,10 @@ public class AnimatedPictureViewer {
 	to an input of sin such that sin will output its maximum, 1, when the 
 	desired *period* of our animatino has occured.
 	
-	The BC will rollto upside down after 1 second. Thus, we need to map 
+	The BC will roll to upside down after 1 second. Thus, we need to map 
 	sin(foo) = 1 to cause the maximum rotation (and tranlsation) to be 
 	synced with 1 second. Therefore, foo must be 1/2.
-	 - we need to scale 1 seconds to map to pi/2, using foo:
+	 - we need to scale 1 second to map to pi/2, using foo:
 	 - 1000 ms = pi/2 rotation  ==>  1 ms = pi/2000 rotation 
 
 	 - let  foo = msElapsed * (pi/2000)
@@ -111,10 +111,11 @@ public class AnimatedPictureViewer {
 	
 	 - EXAMPLE 1: when msElapsed = 1000,  foo = pi/2
 	 	 - if foo = pi/2,  sin(foo) = 1
-	 	 - therefore, factor = 1 after 1 second. perfect!
+	 	 - therefore, factor = 1 after 1 second. the BC is at the right
+	 	   extreme of the motion
 	 - EXAMPLE 2: if 2 seconds have elapsed, foo = pi
 		 - foo = sin(pi), so sin(foo) = 0
-		 - therefore, factor = 0 at the 2nd second, and the BC will 
+		 - therefore, factor = 0 at t = 2 secs, and the BC will 
 		   have returned to it's original location.
 	 - EXAMPLE 3: if 3 seconds have elapsed, foo = 3000 * pi / 2000
 	 	 - foo = (3/2)* pi, so sin(foo) = -1
@@ -169,7 +170,7 @@ public class AnimatedPictureViewer {
 	};
 
 
-	Timer timer = new Timer(25,calcFactor); // 50 millisecond delay
+	Timer timer = new Timer(25,calcFactor); // 25 millisecond delay
 
 
 
