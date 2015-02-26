@@ -130,7 +130,7 @@ public class AnimatedPictureViewer {
 
 
 
-	private final double DESIRED_DISPLACEMENT = Math.PI;
+	// private final double DESIRED_DISPLACEMENT = Math.PI;
 
 	// the variable that will be a function on sin
 	private double factor = 0;
@@ -144,9 +144,9 @@ public class AnimatedPictureViewer {
 	private final int FRAME_W = 640;
 	private final int FRAME_H = 480;
 
-	private final int X_ORIG = 320; // 640/2 
+	// private final int X_ORIG = 320; // 640/2 
 
-	private final double CAT_RADIUS = 100.0;
+	// private final double CAT_RADIUS = 100.0;
 
 
 
@@ -163,13 +163,13 @@ public class AnimatedPictureViewer {
 	// this should execute every 50 ms, from the timer.
 	ActionListener calcFactor  = new ActionListener()	{
 		public void actionPerformed(ActionEvent e)	{
-			msElapsed +=50;
+			msElapsed +=25;
 			factor = Math.sin((msElapsed)*(Math.PI/2000.0));
 		}
 	};
 
 
-	Timer timer = new Timer(50,calcFactor); // 50 millisecond delay
+	Timer timer = new Timer(25,calcFactor); // 50 millisecond delay
 
 
 
@@ -235,22 +235,31 @@ public class AnimatedPictureViewer {
 			g2.fillRect(0,0,this.getWidth(), this.getHeight());
 
 
+			double CAT_RADIUS = Math.min(this.getWidth(),2*this.getHeight())/10.0;
+			double DESIRED_DISPLACEMENT = this.getWidth()/(Math.PI*CAT_RADIUS);
+
+
 			// draw the BetterCat!
 			// start by placing the cat at it's original location, 
 			// then translate and rotate it.
 			Shape bc = new BetterCat(
-								X_ORIG, 
+								this.getWidth()/2.0, 
 								this.getHeight()-CAT_RADIUS,
-								CAT_RADIUS);
+								CAT_RADIUS
+						); // bc
 			bc = ShapeTransforms.translatedCopyOf(
 									bc,
 									factor*DESIRED_DISPLACEMENT*CAT_RADIUS,
-									0);
+									0
+								);
 			bc = ShapeTransforms.rotatedCopyOf(bc, factor*DESIRED_DISPLACEMENT);
+
+
+			float STROKE = (float) (CAT_RADIUS/20.0f);
 
 			// set the stroke to thick
 			Stroke thick = new BasicStroke (
-									4.0f, 
+									STROKE, 
 									BasicStroke.CAP_BUTT, 
 									BasicStroke.JOIN_BEVEL);       
 			g2.setStroke(thick);
@@ -271,7 +280,7 @@ public class AnimatedPictureViewer {
 				// nothing to do but redraw at some arbitrary frame rate, 
 				// so once per 50 ms.           
 				panel.repaint();
-				Thread.sleep(50);
+				Thread.sleep(25);
 				}
 
 			} catch(Exception ex) {
