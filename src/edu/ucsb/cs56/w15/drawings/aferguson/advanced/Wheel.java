@@ -1,0 +1,98 @@
+package edu.ucsb.cs56.w15.drawings.aferguson.advanced;
+import java.awt.geom.GeneralPath; // combinations of lines and curves
+import java.awt.geom.AffineTransform; // translation, rotation, scale
+import java.awt.Shape; // general class for shapes
+
+import java.lang.Math;
+
+// all imports below this line needed if you are implementing Shape
+import java.awt.geom.Point2D; 
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Line2D; 
+import java.awt.geom.Rectangle2D;
+import java.awt.Rectangle;
+import java.awt.geom.PathIterator;
+import java.awt.geom.AffineTransform;
+
+import edu.ucsb.cs56.w15.drawings.utilities.ShapeTransforms;
+import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
+
+/**
+   A drawing of a wheel that implements
+   the Shape interface, and so can be drawn, as well as
+   rotated, scaled, etc.
+      
+   @author Andrew Ferguson
+   @version for CS56, Winter 15, UCSB
+   
+*/
+
+public class Wheel extends GeneralPathWrapper implements Shape
+{
+    /**
+       Constructor
+
+
+       @param x x coord of the wheel
+       @param y y coord of the wheel
+       @param r radius of the wheel
+
+     */
+    public Wheel(double x, double y, double r)
+    {
+    
+        // Rather than having to scale at the end, we can just
+        // draw things the right way to begin with, using the
+        // x, y, width and height.   If you haven't already
+        // hard coded a particular drawing, this may be an easier
+        // way.
+
+
+        
+        Ellipse2D.Double circle = 
+            new Ellipse2D.Double(x, y, r*2, r*2);
+	
+	Ellipse2D.Double outCircle = 
+	    new Ellipse2D.Double(x-r/8, y - r/8, r*2+r/4, r*2+r/4);
+
+        
+        Line2D.Double horizontal = 
+            new Line2D.Double (x, y+r, x + r*2, y+r);
+                               
+        Line2D.Double vertical =
+            new Line2D.Double (x + r, y, x + r, y + r*2);
+
+	Line2D.Double NEDiag = new Line2D.Double 
+	    (x+r-Math.cos(Math.PI/4)*r,y+r+Math.sin(Math.PI/4)*r,x+r+Math.cos(Math.PI/4)*r,y+r-Math.sin(Math.PI/4)*r);
+
+	Line2D.Double SEDiag = new Line2D.Double 
+	    (x+r-Math.cos(Math.PI/4)*r,y+r-Math.sin(Math.PI/4)*r,x+r+Math.cos(Math.PI/4)*r,y+r+Math.sin(Math.PI/4)*r);
+
+	Line2D.Double Diag1 = new Line2D.Double 
+	    (x+r-Math.cos(.3927)*r,y+r-Math.sin(.3927)*r,x+r+Math.cos(.3927)*r,y+r+Math.sin(.3927)*r);
+
+	Line2D.Double Diag2 = new Line2D.Double 
+	    (x+r-Math.cos(.3927)*r,y+r+Math.sin(.3927)*r,x+r+Math.cos(.3927)*r,y+r-Math.sin(.3927)*r);
+
+	Line2D.Double Diag3 = new Line2D.Double 
+	    (x+r-Math.cos(1.1781)*r,y+r+Math.sin(1.1781)*r,x+r+Math.cos(1.1781)*r,y+r-Math.sin(1.1781)*r);
+
+	Line2D.Double Diag4 = new Line2D.Double 
+	    (x+r-Math.cos(1.1781)*r,y+r-Math.sin(1.1781)*r,x+r+Math.cos(1.1781)*r,y+r+Math.sin(1.1781)*r);
+
+       
+        GeneralPath wholeUnicycle = this.get();
+        wholeUnicycle.append(circle, false);
+	wholeUnicycle.append(outCircle, false);
+        wholeUnicycle.append(horizontal, false);
+        wholeUnicycle.append(vertical, false); 
+	wholeUnicycle.append(NEDiag, false);
+	wholeUnicycle.append(SEDiag, false);
+	wholeUnicycle.append(Diag1, false);
+	wholeUnicycle.append(Diag2, false);
+	wholeUnicycle.append(Diag3, false);
+	wholeUnicycle.append(Diag4, false);
+	
+    }
+
+}

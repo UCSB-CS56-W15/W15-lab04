@@ -1,0 +1,148 @@
+package edu.ucsb.cs56.w15.drawings.brianyan.advanced;
+
+import java.awt.Graphics2D;
+import java.awt.geom.Line2D;  // single lines
+import java.awt.geom.Ellipse2D;  // ellipses and circles
+import java.awt.geom.Rectangle2D; // for the bounding box
+import java.awt.Rectangle;  // squares and rectangles
+import java.awt.geom.GeneralPath; // combinations of lines and curves
+import java.awt.geom.AffineTransform; // translation, rotation, scale
+import java.awt.Shape; // general class for shapes
+import java.awt.Color; // class for Colors
+import java.awt.Stroke;
+import java.awt.BasicStroke;
+
+
+import edu.ucsb.cs56.w15.drawings.utilities.ShapeTransforms;
+import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
+
+/**
+ * A class with static methods for drawing various pictures
+ * 
+ * @author Phill Conrad 
+ * @author Brian Yan
+ * @version for CS56, lab06, Winter 2009
+ */
+
+
+public class AllMyDrawings
+{
+    /** Draw a picture with a few televisions 
+     */
+    public static void drawPicture1(Graphics2D g2){
+	Television t1 = new Television(100,250,50);
+	g2.setColor(Color.BLACK); g2.draw(t1);
+
+	//Make a black Cyan televison that is half the size
+	// and moved over 100 pixels in x direction
+	
+	Shape t2 = ShapeTransforms.scaledCopyOfLL(t1,0.5,0.5);
+	t2 = ShapeTransforms.translatedCopyOf(t1,100,0);
+	g2.setColor(Color.CYAN); g2.draw(t2);
+
+	// Here's a telivison that's 3x as big 
+	// and moved over 150 more pixels to right.
+	t2 = ShapeTransforms.scaledCopyOfLL(t2,3,3);
+	t2 = ShapeTransforms.translatedCopyOf(t2,150,0);
+	// draw with thicker brush
+	Stroke thick = new BasicStroke (4.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL); 
+
+	Stroke orig = g2.getStroke();
+	g2.setStroke(thick);
+	g2.setColor(new Color(0x002FA7));
+	g2.draw(t2);
+
+	TelevisionwithStand tv1= new TelevisionwithStand(50,50,80);
+	g2.setColor(new Color(0x8F00FF)); g2.draw(tv1);
+
+	g2.setStroke(orig);
+	g2.setColor(Color.BLACK); 
+	g2.drawString("A few televisions by Brian Yan", 20,20);
+		
+    }
+
+    /** Draw a picture with a few televisions
+     */
+    public static void drawPicture2(Graphics2D g2) {
+
+	// Draw some Televisions.
+	
+	Television big = new Television(100,50,100);
+	Television small = new Television(20,50,40);
+	Television tall = new Television(20,150,20);
+	Television shorts = new Television(20,250,40);
+	
+	g2.setColor(Color.RED);     g2.draw(big);
+	g2.setColor(Color.GREEN);   g2.draw(small);
+	g2.setColor(Color.BLUE);    g2.draw(tall);
+	g2.setColor(Color.MAGENTA); g2.draw(shorts);
+	
+	
+	// Make a black television that's half the size of a big tv, 
+	// and moved over 100 pixels in x direction and down 100 pixels in the y direction
+	Shape h2 = ShapeTransforms.scaledCopyOfLL(big,0.5,0.5);
+	h2 = ShapeTransforms.translatedCopyOf(h2,100,100);
+	g2.setColor(Color.BLACK); g2.draw(h2);
+	
+	// Here's a house that's 4x as big (2x the original)
+	// and moved over 150 more pixels to right.
+	h2 = ShapeTransforms.scaledCopyOfLL(h2,4,4);
+	h2 = ShapeTransforms.translatedCopyOf(h2,150,0);
+	
+	// We'll draw this with a thicker stroke
+	Stroke thick = new BasicStroke (4.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL);       
+	
+
+	Stroke orig=g2.getStroke();
+	g2.setStroke(thick);
+	g2.setColor(new Color(0x002FA7)); 
+	g2.draw(h2); 
+	
+	// Draw two Television with stands
+	
+	TelevisionwithStand hw1 = new TelevisionwithStand(50,350,40);
+	TelevisionwithStand hw2 = new TelevisionwithStand(200,250,100);
+	
+	g2.draw(hw1);
+	g2.setColor(new Color(0x8F00FF)); 
+
+	// Rotate the second television with stand 45 degrees around its center.
+	Shape hw3 = ShapeTransforms.rotatedCopyOf(hw2, Math.PI/4.0);
+
+	g2.draw(hw3);
+	
+	g2.setStroke(orig);
+	g2.setColor(Color.BLACK); 
+	g2.drawString("A few houses by Brian Yan", 20,20);
+    }
+  
+    /** Draw a different picture with a few television
+     */
+
+    public static void drawPicture3(Graphics2D g2) {
+	
+	// label the drawing
+	
+	g2.drawString("A bunch of Televisions by Brian Yan", 20,20);
+
+	
+	// Draw some televisions.
+	
+       Television large = new Television(100,250,125);
+       Television small = new Television(20,50,40);
+       
+       g2.setColor(Color.RED);     g2.draw(large);
+       g2.setColor(Color.GREEN);   g2.draw(small);
+      	
+	// draw an upside down television with stand
+	
+	TelevisionwithStand hw2 = new TelevisionwithStand(300,150,100);
+	g2.setColor(new Color(0x8F00FF));
+	Shape hw3 = ShapeTransforms.rotatedCopyOf(hw2, Math.PI);
+	g2.draw(hw3);
+	
+       
+    }
+    
+
+}
