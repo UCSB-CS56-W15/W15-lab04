@@ -14,9 +14,14 @@ public class AnimatedPictureViewer {
     
     private int x = 100;
     private int y = 100;
+    private int w = 100;
+    private int h = 200;
     
     private int dx = 5;
     private int dy = 3;
+    private int dw = 10;
+    private int dh = 20;
+
     public static void main (String[] args) {
       new AnimatedPictureViewer().go();
     }
@@ -59,7 +64,8 @@ public class AnimatedPictureViewer {
 
           // Draw the Domino
           g2.setColor(Color.BLACK);
-          Domino test = new Domino(x, y, 100, 200);
+
+          Domino test = new Domino(x, y, w, h);
           g2.draw(test);
        }
     }
@@ -76,8 +82,16 @@ public class AnimatedPictureViewer {
 	    if (y >= 250) { dy = -3; }
 	    if (y <= 20) { dy = 3; }
 
+	    if (w >= 100) { dw = -10; }
+	    if (w <= 10) { dw = 10; }
+
+	    if (h >= 200) { dh = -20; }
+	    if (h <= 20) { dh = 20; }
+
             x += dx;              
 	    y += dy;
+	    w += dw;
+	    h += dh;
   
             panel.repaint();
             Thread.sleep(50);
