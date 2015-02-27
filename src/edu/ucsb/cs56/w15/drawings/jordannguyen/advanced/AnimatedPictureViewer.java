@@ -56,9 +56,19 @@ public class AnimatedPictureViewer {
           g2.setColor(Color.white);
           g2.fillRect(0,0,this.getWidth(), this.getHeight());
 
+	  // Create a random color
+	  int r = (int) (Math.random() * 256);
+	  int b = (int) (Math.random() * 256);
+	  int gr = (int) (Math.random() * 256);
+	  Color randomColor = new Color(r,b,gr);
+	
+	  Stroke thick = new BasicStroke (4.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL); 
+	  g2.setStroke(thick);
+  
+	
           // Draw the doors
 	  
-          g2.setColor(Color.RED);
+          g2.setColor(randomColor);
           BathroomDoors doors = new BathroomDoors(x, y, 100,200,20);
           g2.draw(doors);
        }
