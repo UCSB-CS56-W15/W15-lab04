@@ -14,8 +14,10 @@ public class AnimatedPictureViewer {
     
     private int x = 100;
     private int y = 250;
-    
+    private int h = 200;    
+
     private int dx = 5;
+    private int dh = 5;
 
     public static void main (String[] args) {
       new AnimatedPictureViewer().go();
@@ -59,7 +61,7 @@ public class AnimatedPictureViewer {
 
           // Draw the Cup
           g2.setColor(Color.RED);
-          CupWithStraw test = new CupWithStraw(x, y, 60, 100);
+          CupWithStraw test = new CupWithStraw(x, y, 60, h);
           g2.draw(test);
        }
     }
@@ -72,8 +74,12 @@ public class AnimatedPictureViewer {
 
             if (x >= 350) { dx = -5; }
             if (x <= 50) { dx = 5; }
+
+	    if(h>=150) { dh = -5; }
+	    if(h<=20) {dh = 5; }
             
-            x += dx;                
+            x += dx;
+	    h += dh;                
             panel.repaint();
             Thread.sleep(50);
           }
