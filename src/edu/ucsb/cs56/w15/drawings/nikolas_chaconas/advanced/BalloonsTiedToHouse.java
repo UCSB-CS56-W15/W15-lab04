@@ -42,12 +42,12 @@ public class BalloonsTiedToHouse extends Balloons implements Shape
 		double width = size*200;
 
 		//make top of house using inheritted class MakeTriangle from Balloons.java
-		GeneralPath topOfHouse = MakeTriangle(x, yCord-length, width, length);
+		GeneralPath topOfHouse = MakeTriangle(xCord, yCord-length, width, length);
 		
-		//base of house x coordinate
-		double basey = yCord-length+1.1*length;
 		//base of house y coordinate
-		double basex = x-width/5;
+		double basey = yCord-length+1.1*length;
+		//base of house x coordinate
+		double basex = xCord-width/5;
 		
 		//height of base of house
 		double baseHeight = width*1/3;
