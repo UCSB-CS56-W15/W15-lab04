@@ -132,6 +132,13 @@
   </target>
 
   <!-- ****************** FOR GRADING HERE ************** -->
+  <target name="gradeAnim" depends="compile" 
+	  description="run AnimatedPictureViewer this way: ant -DstudentName=jgaucho gradeAnim">
+    <java fork="true" classpathref="project.class.path" 
+	  classname="${packagePrefix}.${studentName}.advanced.AnimatedPictureViewer" />
+  </target>
+
+
   <target name="gradeMPV3" depends="compile" 
 	  description="run MultiPictureViewer from student subdir with arg 3">
     <java fork="true" classpathref="project.class.path" classname="${packagePrefix}.${studentName}.advanced.MultiPictureViewer">
