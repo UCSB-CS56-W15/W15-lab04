@@ -21,7 +21,7 @@ import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
  * 
  * @author Phill Conrad 
  * @author Brian Yan
- * @version for CS56, lab06, Winter 2009
+ * @version for CS56, lab06, Winter 2015
  */
 
 
@@ -116,7 +116,7 @@ public class AllMyDrawings
 	g2.drawString("A few houses by Brian Yan", 20,20);
     }
   
-    /** Draw a different picture with a few television
+    /** Draw a different picture with a few televisions
      */
 
     public static void drawPicture3(Graphics2D g2) {

@@ -87,9 +87,9 @@ public class AllMyDrawings
 	// Rotate the first house 45 degrees around its center.
 	g2.setStroke(orig);
 	g2.setColor(Color.MAGENTA);
-	Shape uni5 = ShapeTransforms.rotatedCopyOf(uni1, Math.PI/4.0);
+        Shape uni5 = ShapeTransforms.rotatedCopyOf(uni1, Math.PI/4.0);
 
-	g2.draw(uni5);
+      	g2.draw(uni5);
 
 
 
