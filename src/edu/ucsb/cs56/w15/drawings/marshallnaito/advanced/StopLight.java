@@ -37,8 +37,8 @@ public class StopLight extends Pole implements Shape
         //declare variables
     	GeneralPath gp = this.get();
 
-    	double lightWidth = 0.5 * width;
-    	double lightHeight =  1.5 * width;
+    	double lightWidth = 0.1 * height;
+    	double lightHeight =  0.3 * height;
     	double lightRadius = 0.33 * lightHeight;
 
         double straightBottom = y-height;
@@ -52,6 +52,7 @@ public class StopLight extends Pole implements Shape
     	Line2D.Double stopPole = new Line2D.Double( x , straightBottom , bendWidth , straightBottom);
 
     	Ellipse2D.Double l1 = new Ellipse2D.Double( bendWidth , straightBottom, lightRadius, lightRadius);
+  
 
     	Ellipse2D.Double l2 = new Ellipse2D.Double( bendWidth , straightBottom+lightRadius, lightRadius, lightRadius);
 

@@ -27,22 +27,22 @@ import edu.ucsb.cs56.w15.drawings.utilities.GeneralPathWrapper;
 
 public class AllMyDrawings
 {
-    /** Draw a picture with a few trees 
+    /** Draw a picture with a few balls 
      */
 
     public static void drawPicture1(Graphics2D g2) {
 
-	Tree t1 = new Tree(100,250,50,75);
+	Balls t1 = new Balls(100,250,50,75);
 	g2.setColor(Color.GREEN); g2.draw(t1);
 	
-	// Make a black tree that's half the size, 
+	// Make a black balls that's half the size, 
 	// and moved over 150 pixels in x direction
 
 	Shape t2 = ShapeTransforms.scaledCopyOfLL(t1,0.5,0.5);
 	t2 = ShapeTransforms.translatedCopyOf(t2,150,0);
 	g2.setColor(Color.BLACK); g2.draw(t2);
 	
-	// Here's a tree that's 4x as big (2x the original)
+	// Here's a balls that's 4x as big (2x the original)
 	// and moved over 150 more pixels to right.
 	t2 = ShapeTransforms.scaledCopyOfLL(t2,4,4);
 	t2 = ShapeTransforms.translatedCopyOf(t2,150,0);
@@ -58,7 +58,7 @@ public class AllMyDrawings
 	g2.setColor(new Color(0x458B00)); 
 	g2.draw(t2); 
 	
-	// Draw two houses with Windows
+	// Draw two trees with ornaments
 	
 	TreeWithBalls tb1 = new TreeWithBalls(50,350,75,150);
 	TreeWithBalls tb2 = new TreeWithBalls(200,350,250,250);

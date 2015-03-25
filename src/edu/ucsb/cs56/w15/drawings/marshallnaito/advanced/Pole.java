@@ -48,7 +48,7 @@ public class Pole extends GeneralPathWrapper implements Shape
 
         Rectangle.Double base = new Rectangle.Double(x-baseWidth,y,width,baseHeight);
 
-        Ellipse2D.Double poleLight = new Ellipse2D.Double(bendWidth , bendHeight, baseWidth , .5*baseWidth);
+        Ellipse2D.Double poleLight = new Ellipse2D.Double(bendWidth , bendHeight-0.03125*height, 0.1*height , .05*height);
 
         Line2D.Double straight = new Line2D.Double(x , y , x , straightBottom);
 

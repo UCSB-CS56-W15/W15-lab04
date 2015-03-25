@@ -45,7 +45,7 @@ public class Car extends GeneralPathWrapper implements Shape
         
 	//        double firstStoryHeight = .75 * height;
 	//        double roofHeight = height - firstStoryHeight;
-        double underSide1 = 0.15 * length;
+    double underSide1 = 0.15 * length;
 	double bumper2 = 0.66 * height;
 	double trunkLength3 = underSide1;
 	double rearWindow4 = 1.4142 * 0.34 * height; // length of 45 degree angle windows

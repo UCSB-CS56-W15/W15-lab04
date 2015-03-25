@@ -37,11 +37,11 @@ public class AllMyDrawings
 	     g2.draw(light1);
 
 	     Shape l1 = ShapeTransforms.rotatedCopyOf(light1,Math.PI/4.0);
-	     l1 = ShapeTransforms.translatedCopyOf(l1,300,45);
+	     l1 = ShapeTransforms.translatedCopyOf(light1,300,45);
 	     g2.setColor(Color.CYAN); 
 	     g2.draw(l1);
 
-		 Pole pole1 = new Pole(150,400, 16, 120);
+	     Pole pole1 = new Pole(150,400, 16, 120);
 	     g2.setColor(Color.BLUE);
 	     g2.draw(pole1);
 
@@ -55,19 +55,21 @@ public class AllMyDrawings
     public static void drawPicture2(Graphics2D g2) {
 	
 	     
-	     StopLight light1 = new StopLight(150,200, 16, 120);
+	     StopLight lt1 = new StopLight(150,200, 16, 120);
 	     g2.setColor(Color.BLACK);
-	     g2.draw(light1);
+	     g2.draw(lt1);
 
-
-	     StopLight light2 = new StopLight(200, 400, 8, 60);
-	     g2.setColor(Color.GREEN);
-	     g2.draw(light2);
-
-	     Shape l1 = ShapeTransforms.rotatedCopyOf(light1,Math.PI);
+	     Shape s1 = ShapeTransforms.rotatedCopyOf(lt1,Math.PI/4.0);
+	     s1 = ShapeTransforms.translatedCopyOf(lt1,300,45);
 	     g2.setColor(Color.CYAN); 
-	     g2.draw(l1);
-         g2.drawString("A bunch of Poles by Marshall Naito", 20,20);
+	     g2.draw(s1);
+             g2.drawString("A bunch of Poles by Marshall Naito", 20,20);
+
+	     StopLight lt2 = new StopLight(200, 400, 24, 60);
+	     g2.setColor(Color.GREEN);
+	     g2.draw(lt2);
+
+ 
 
      }
   
