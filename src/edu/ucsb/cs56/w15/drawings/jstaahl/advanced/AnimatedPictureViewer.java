@@ -52,22 +52,22 @@ public class AnimatedPictureViewer extends JFrame
 	add(component);
 
 	getContentPane().addMouseListener(
-						new MouseAdapter(){
-						    public void mouseEntered(MouseEvent e){
-							//Get a new animation thread and start
-							// the animation on it.
-							animate = new Animate();
-							animate.start();
+					 new MouseAdapter(){
+			    public void mouseEntered(MouseEvent e){
+				  //Get a new animation thread and start
+				    // the animation on it.
+				 animate = new Animate();
+				 animate.start();
 						    }//end mouseEntered
 						    
-						    public void mouseExited(MouseEvent e){
-							//Terminate the animation.
-							animate.interrupt();
-							//Let the thread die a natural death.
-							// Then make it eligible for garbage
-							// collection.
-							while (animate.isAlive()){}//loop;
-							animate = null;
+		 public void mouseExited(MouseEvent e){
+			 //Terminate the animation.
+			 animate.interrupt();
+			  //Let the thread die a natural death.
+			  // Then make it eligible for garbage
+			  // collection.
+		    while (animate.isAlive()){}//loop;
+			 animate = null;
 						    }//end MouseExited
 						}//end new MouseAdapter
 						);//end addMouseListener()
