@@ -1,4 +1,4 @@
-package edu.ucsb.cs56.w15.drawings.pconrad.advanced;
+package edu.ucsb.cs56.w15.drawings.vgandolfo.advanced;
 import java.awt.geom.GeneralPath; // combinations of lines and curves
 import java.awt.geom.AffineTransform; // translation, rotation, scale
 import java.awt.Shape; // general class for shapes
