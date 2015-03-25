@@ -1,4 +1,4 @@
-package edu.ucsb.cs56.w15.drawings.andrewberls.advanced;
+package edu.ucsb.cs56.w15.drawings.jordannguyen.advanced;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,20 +8,19 @@ public class AnimatedPictureViewer {
 
     private DrawPanel panel = new DrawPanel();
     
-    private Ipod ipod = new Ipod(100, 100, 100);
-    
     Thread anim;   
     
-    private int x = 100;
-    private int y = 100;
+    private int x = 20;
+    private int y = 20;
     
     private int dx = 5;
+    private int dy = 5;
 
     public static void main (String[] args) {
       new AnimatedPictureViewer().go();
     }
 
-    public void go () {
+    public void go() {
       JFrame frame = new JFrame();
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -57,10 +56,21 @@ public class AnimatedPictureViewer {
           g2.setColor(Color.white);
           g2.fillRect(0,0,this.getWidth(), this.getHeight());
 
-          // Draw the Ipod
-          g2.setColor(Color.RED);
-          Ipod test = new Ipod(x, y, 100);
-          g2.draw(test);
+	  // Create a random color
+	  int r = (int) (Math.random() * 256);
+	  int b = (int) (Math.random() * 256);
+	  int gr = (int) (Math.random() * 256);
+	  Color randomColor = new Color(r,b,gr);
+	
+	  Stroke thick = new BasicStroke (4.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL); 
+	  g2.setStroke(thick);
+  
+	
+          // Draw the doors
+	  
+          g2.setColor(randomColor);
+          BathroomDoors doors = new BathroomDoors(x, y, 100,200,20);
+          g2.draw(doors);
        }
     }
     
@@ -68,14 +78,37 @@ public class AnimatedPictureViewer {
       public void run() {
         try {
           while (true) {
-            // Bounce off the walls
+	  
+	      // bounce off walls in a rectangle formation
+	      while (x < 400 && y == 20) {
+		  dx = 5;
+		  x += dx;
+		  panel.repaint();
+		  Thread.sleep(50);
+	      }
 
-            if (x >= 400) { dx = -5; }
-            if (x <= 50) { dx = 5; }
-            
-            x += dx;                
-            panel.repaint();
-            Thread.sleep(50);
+	      while (x >= 400 && y < 220) {
+		  dy = 5;
+		  y += dy;
+		  panel.repaint();
+		  Thread.sleep(50);
+	      }
+
+	      while (x > 20 && y >= 220) {
+		  dx = -5;
+		  x += dx;
+		  panel.repaint();
+		  Thread.sleep(50);
+	      }
+
+	      while (x == 20 && y > 20) {
+		  dy = -5;
+		  y += dy;
+		  panel.repaint();
+		  Thread.sleep(50);
+	      }
+	      
+
           }
         } catch(Exception ex) {
           if (ex instanceof InterruptedException) {

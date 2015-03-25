@@ -1,4 +1,4 @@
-package edu.ucsb.cs56.w15.drawings.andrewberls.advanced;
+package edu.ucsb.cs56.w15.drawings.michelehaque.advanced;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,7 +8,7 @@ public class AnimatedPictureViewer {
 
     private DrawPanel panel = new DrawPanel();
     
-    private Ipod ipod = new Ipod(100, 100, 100);
+    private GameBoyWithButtons gb= new GameBoyWithButtons(20, 30, 50, 100);
     
     Thread anim;   
     
@@ -16,12 +16,13 @@ public class AnimatedPictureViewer {
     private int y = 100;
     
     private int dx = 5;
+    private int dy = 5;
 
     public static void main (String[] args) {
       new AnimatedPictureViewer().go();
     }
 
-    public void go () {
+    public void go() {
       JFrame frame = new JFrame();
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -59,8 +60,8 @@ public class AnimatedPictureViewer {
 
           // Draw the Ipod
           g2.setColor(Color.RED);
-          Ipod test = new Ipod(x, y, 100);
-          g2.draw(test);
+          GameBoyWithButtons gb1= new GameBoyWithButtons(x, y, 50, 100);
+          g2.draw(gb1);
        }
     }
     
@@ -70,10 +71,13 @@ public class AnimatedPictureViewer {
           while (true) {
             // Bounce off the walls
 
-            if (x >= 400) { dx = -5; }
-            if (x <= 50) { dx = 5; }
+            if (x >= 635) { dx = -5; }
+            if (x <= 5) { dx = 5; }
+	    if (y >= 400) { dy = -5; }
+	    if (y <= 5) { dy = 5; }
             
-            x += dx;                
+            x += dx;
+	    y += dy;
             panel.repaint();
             Thread.sleep(50);
           }

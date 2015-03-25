@@ -1,4 +1,4 @@
-package edu.ucsb.cs56.w15.drawings.fstruong.advanced;
+package edu.ucsb.cs56.w15.drawings.gaberome.advanced;
 
 import javax.swing.JFrame;
 
@@ -6,8 +6,8 @@ import javax.swing.JFrame;
  *  just three simple Java graphics objects, namely
  *  Rectangle, Line2D.Double, Ellipse2D.Double
  *  
- * @author P. Conrad, Felicia Truong
- * @version for UCSB CS56, W15, 02/19/2015
+ * @author P. Conrad 
+ * @version for UCSB CS56, S12, 02/09/2011
  */
 
 public class MultiPictureViewer
@@ -31,7 +31,7 @@ public class MultiPictureViewer
        frame.setSize(640,480); // @@@ MODIFY THIS LINE IF YOU LIKE
        
        // Set your own title
-       frame.setTitle("Felicia's First Drawing"); // @@@ MODIFY THIS LINE
+       frame.setTitle("Phill's First Drawing"); // @@@ MODIFY THIS LINE
        
        // Always do this so that the red X (or red circle) works
        // to close the window. 
