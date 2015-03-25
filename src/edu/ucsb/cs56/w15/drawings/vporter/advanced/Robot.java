@@ -30,7 +30,8 @@ public class Robot extends GeneralPathWrapper implements Shape
        @param x x coord of upper left corner of the head
        @param y y coord of upper left corner of the head
        @param height of Robot (from bottom of legs to the top of head)
-     */
+    */
+
     public Robot(double x, double y, double height)
     {
         //Declare body part height and width base on input params

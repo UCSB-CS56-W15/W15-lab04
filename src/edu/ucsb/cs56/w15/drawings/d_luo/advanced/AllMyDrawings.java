@@ -58,17 +58,16 @@ public class AllMyDrawings
 	g2.setStroke(thick);
 	g2.setColor(new Color(0x002FA7)); 
 	g2.draw(s2); 
-	
-	// Draw two houses with Windows
-	
-	//HouseWithWindows hw1 = new HouseWithWindows(50,350,40,75);
-	//HouseWithWindows hw2 = new HouseWithWindows(200,350,200,100);
+
+	SwordAndHilt sh1 = new SwordAndHilt(50,350,40,75);
+	SwordAndHilt sh2 = new SwordAndHilt(200,350,200,100);
 	
 	//g2.draw(hw1);
 	//g2.setColor(new Color(0x8F00FF)); g2.draw(hw2);
-	
+	g2.draw(sh1);
+	g2.setColor(new Color(0x8F00FF)); g2.draw(sh2); 	
 	// @@@ FINALLY, SIGN AND LABEL YOUR DRAWING
-	
+		
 	g2.setStroke(orig);
 	g2.setColor(Color.BLACK); 
 	g2.drawString("Some swords by Dan Luo. Well, they kind of look like pencils.", 20,20);

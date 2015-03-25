@@ -32,7 +32,7 @@ public class Superman extends Person implements Shape
     public Superman(double x, double y, double width, double height)
     {
 	// construct the person
-	super(x,y,width,height);
+	super(x,y,width,height, 1);
 
 
 	double Jx =(x + width/2 ); //x coordinate of the neck joint
